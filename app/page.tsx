@@ -105,7 +105,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-xl font-bold">Social Leaderboards</h3>
                 <p className="text-center text-muted-foreground">
-                  Compete with friends and see who's at the top with real-time leaderboards and rankings.
+                  Compete with friends and see who{"'"}s at the top with real-time leaderboards and rankings.
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
@@ -233,7 +233,7 @@ export default function Home() {
                 <Button type="submit" className="p-6">Subscribe</Button>
               </form>
               <p className="text-xs text-muted-foreground">
-                We'll keep you updated on our launch and new features.{" "}
+                We{"'"}ll keep you updated on our launch and new features.{" "}
                 <Link href="/terms" className="underline underline-offset-2">
                   Terms & Conditions
                 </Link>
