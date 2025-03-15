@@ -68,7 +68,7 @@ export default function Home() {
               <div className="flex items-center justify-center">
                 <div className="relative h-[500px] w-[250px] overflow-hidden rounded-xl border-8 border-foreground/10 shadow-xl">
                   <Image
-                    src="/placeholder.svg?height=800&width=400"
+                    src="/UserPage.png"
                     alt="Challengeer app screenshot"
                     fill
                     className="object-cover"
