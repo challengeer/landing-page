@@ -27,50 +27,59 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex items-center justify-between px-6 md:px-10 py-4">
-          <div className="flex items-center gap-2">
-            <Image
-              src="/icon.png"
-              alt="Challengeer Logo"
-              width={32}
-              height={32}
-              className="object-contain rounded-md"
-              priority
-            />
-            <span className="text-xl font-bold">Challengeer</span>
-          </div>
-          <nav className="hidden md:flex gap-6">
-            <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
-              {t('Navigation.features')}
-            </Link>
-            <Link href="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
-              {t('Navigation.howItWorks')}
-            </Link>
-            <Link href="#download" className="text-sm font-medium transition-colors hover:text-primary">
-              {t('Navigation.download')}
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="flex items-center gap-2">
-                  <LanguageIcon className="h-4 w-4" />
-                  <span>{language.toUpperCase()}</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
-                  Slovak
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+        <div className="container px-6 md:px-10 py-4">
+          <div className="flex items-center justify-between relative">
+            {/* Logo */}
+            <div className="flex items-center gap-2 z-10">
+              <Image
+                src="/icon.png"
+                alt="Challengeer Logo"
+                width={32}
+                height={32}
+                className="object-contain rounded-md"
+                priority
+              />
+              <span className="text-xl font-bold">Challengeer</span>
+            </div>
+            
+            {/* Navigation - centered */}
+            <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8">
+              <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
+                {t('Navigation.features')}
+              </Link>
+              <Link href="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
+                {t('Navigation.howItWorks')}
+              </Link>
+              <Link href="#download" className="text-sm font-medium transition-colors hover:text-primary">
+                {t('Navigation.download')}
+              </Link>
+            </nav>
+            
+            {/* Language dropdown */}
+            <div className="flex items-center gap-4 z-10">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm" className="flex items-center gap-2">
+                    <LanguageIcon className="h-4 w-4" />
+                    <span>{language.toUpperCase()}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
+                    English
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
+                    Slovak
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </header>
       <main className="flex-1 ">
+
+        {/* Hero section */}
         <section className="py-6 md:py-12 lg:py-16 xl:py-24">
           <div className="container px-6 md:px-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
@@ -110,6 +119,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Features section */}
         <section id="features" className="bg-muted py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -157,6 +167,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* How it works section */}
         <section id="how-it-works" className="py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -201,8 +212,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Call to action section */}
         <section className="py-12 md:py-24 lg:py-32 bg-muted">
-          <div className="container px-4 md:px-6 px-6 md:px-10">
+          <div className="container px-6 md:px-10">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
@@ -256,8 +268,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Download section, email subscription? */}
         <section id="download" className="py-12 md:py-24 lg:py-32">
-          <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
+          <div className="container grid items-center justify-center gap-4 px-6 md:px-10 text-center">
             <div className="space-y-3">
               <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
                 {t('Download.title')}
@@ -299,8 +312,10 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Footer */}
       <footer className="border-t py-6 md:py-0">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4 md:px-6">
+        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
           <div className="flex items-center gap-2">
             <Image src="/icon.png" alt="Challengeer Logo" width={32} height={32} className="object-contain rounded-md" />
             <p className="text-sm font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
