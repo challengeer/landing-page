@@ -26,6 +26,8 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col">
+
+      {/* Header - change this later */}
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container px-6 md:px-10 py-4">
           <div className="flex items-center justify-between relative">
@@ -41,8 +43,8 @@ export default function Home() {
               />
               <span className="text-xl font-bold">Challengeer</span>
             </div>
-            
-            {/* Navigation - centered */}
+
+            {/* Navigation - now centered */}
             <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8">
               <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
                 {t('Navigation.features')}
@@ -54,7 +56,7 @@ export default function Home() {
                 {t('Navigation.download')}
               </Link>
             </nav>
-            
+
             {/* Language dropdown */}
             <div className="flex items-center gap-4 z-10">
               <DropdownMenu>
@@ -80,7 +82,7 @@ export default function Home() {
       <main className="flex-1 ">
 
         {/* Hero section */}
-        <section className="py-6 md:py-12 lg:py-16 xl:py-24">
+        {/* <section className="py-6 md:py-12 lg:py-16 xl:py-24">
           <div className="container px-6 md:px-10">
             <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
               <div className="flex flex-col justify-center space-y-4">
@@ -117,7 +119,17 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </section> */}
+
+        <section className="py-12 md:py-24 lg:py-32">
+          <div className="container items-center justify-center">
+            <h1 className="text-6xl font-bold text-center">
+              {t('Hero.title')}
+            </h1>
+          </div>
+          
         </section>
+
 
         {/* Features section */}
         <section id="features" className="bg-muted py-12 md:py-24 lg:py-32">
@@ -281,10 +293,10 @@ export default function Home() {
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
               <form className="flex flex-col gap-2 sm:flex-row">
-                <Input 
-                  type="email" 
-                  placeholder={t('Download.emailPlaceholder')} 
-                  className="max-w-lg flex-1 p-6" 
+                <Input
+                  type="email"
+                  placeholder={t('Download.emailPlaceholder')}
+                  className="max-w-lg flex-1 p-6"
                 />
                 <Button type="submit" className="p-6">{t('Download.subscribe')}</Button>
               </form>
