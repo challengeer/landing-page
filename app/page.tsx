@@ -53,9 +53,11 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const [isPhoneFixed, setIsPhoneFixed] = useState(false);
+  const [activeFeature, setActiveFeature] = useState(1);
   const featuresRef = useRef<HTMLDivElement>(null);
   const phoneContainerRef = useRef<HTMLDivElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Handle window resize and initial mobile detection
   useEffect(() => {
@@ -76,23 +78,63 @@ export default function Home() {
   // Handle scroll for features section
   useEffect(() => {
     const handleScroll = () => {
-      if (!featuresRef.current || !phoneRef.current || !phoneContainerRef.current || isMobile) return;
+      if (!featuresRef.current || isMobile) return;
 
       const featuresSection = featuresRef.current;
-      const phoneContainer = phoneContainerRef.current;
-
+      const featureElements = featureRefs.current;
+      
       // Get the position of the features section
       const featuresSectionRect = featuresSection.getBoundingClientRect();
       const featuresSectionTop = featuresSectionRect.top;
       const featuresSectionBottom = featuresSectionRect.bottom;
-
+      
       // Check if we're in the features section
       if (featuresSectionTop <= 0 && featuresSectionBottom >= window.innerHeight) {
         // We're in the features section, make the phone fixed
         setIsPhoneFixed(true);
+        
+        // Apply fade effects to features
+        featureElements.forEach((feature, index) => {
+          if (!feature) return;
+          
+          const rect = feature.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          
+          // Calculate opacity based on position in viewport
+          let opacity = 1;
+          
+          // If element is moving out the top of the viewport
+          if (rect.bottom < 150) { // Increased from 100 to 150
+            opacity = rect.bottom / 150; // Adjusted divisor to match
+          }
+          
+          // If element is moving out the bottom of the viewport
+          if (rect.top > viewportHeight - 150) { // Increased from 100 to 150
+            opacity = (viewportHeight - rect.top) / 150; // Adjusted divisor to match
+          }
+          
+          // Apply a power curve for sharper falloff
+          opacity = Math.pow(opacity, 3);
+          
+          // Ensure opacity stays in valid range
+          opacity = Math.max(0, Math.min(1, opacity));
+          
+          // Apply opacity
+          feature.style.opacity = opacity.toString();
+          
+          // Set active feature - element is mostly in viewport
+          if (rect.top < viewportHeight/2 && rect.bottom > viewportHeight/2) {
+            setActiveFeature(index + 1);
+          }
+        });
       } else {
-        // We're outside the features section, make the phone relative
+        // We're outside the features section
         setIsPhoneFixed(false);
+        
+        // Reset opacities
+        featureElements.forEach(feature => {
+          if (feature) feature.style.opacity = '1';
+        });
       }
     };
 
@@ -254,7 +296,11 @@ export default function Home() {
               {/* Left column - Features content */}
               <div className="md:w-1/2 md:pr-12">
                 {/* Feature 1 */}
-                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-1">
+                <div 
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  id="feature-1"
+                  ref={el => { featureRefs.current[0] = el; }}
+                >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature1.title') || "Create Challenges"}
@@ -266,7 +312,11 @@ export default function Home() {
                 </div>
 
                 {/* Feature 2 */}
-                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-2">
+                <div 
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  id="feature-2"
+                  ref={el => { featureRefs.current[1] = el; }}
+                >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature2.title') || "Track Progress"}
@@ -278,7 +328,11 @@ export default function Home() {
                 </div>
 
                 {/* Feature 3 */}
-                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-3">
+                <div 
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity" 
+                  id="feature-3"
+                  ref={el => { featureRefs.current[2] = el; }}
+                >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature3.title') || "Compete with Friends"}
@@ -290,7 +344,11 @@ export default function Home() {
                 </div>
 
                 {/* Feature 4 */}
-                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-4">
+                <div 
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity" 
+                  id="feature-4"
+                  ref={el => { featureRefs.current[3] = el; }}
+                >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature4.title') || "Earn Rewards"}
