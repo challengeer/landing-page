@@ -249,17 +249,17 @@ export default function Home() {
 
         {/* Features section */}
         <section id="features" className="py-24 md:py-32 relative" ref={featuresRef}>
-          <div className="container px-6 md:px-10">
+          <div className="container px-10 md:px-20">
             <div className="md:flex">
               {/* Left column - Features content */}
               <div className="md:w-1/2 md:pr-12">
                 {/* Feature 1 */}
                 <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-1">
                   <div className="max-w-md">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature1.title') || "Create Challenges"}
                     </h3>
-                    <p className="text-base md:text-lg text-muted-foreground">
+                    <p className="text-base md:text-xl text-muted-foreground">
                       {t('Features.feature1.description') || "Create custom challenges for yourself or invite friends to join. Set goals, timeframes, and rewards to stay motivated."}
                     </p>
                   </div>
@@ -268,10 +268,10 @@ export default function Home() {
                 {/* Feature 2 */}
                 <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-2">
                   <div className="max-w-md">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature2.title') || "Track Progress"}
                     </h3>
-                    <p className="text-base md:text-lg text-muted-foreground">
+                    <p className="text-base md:text-xl text-muted-foreground">
                       {t('Features.feature2.description') || "Monitor your achievements with detailed statistics and visualizations. See your improvement over time and stay motivated."}
                     </p>
                   </div>
@@ -280,10 +280,10 @@ export default function Home() {
                 {/* Feature 3 */}
                 <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-3">
                   <div className="max-w-md">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature3.title') || "Compete with Friends"}
                     </h3>
-                    <p className="text-base md:text-lg text-muted-foreground">
+                    <p className="text-base md:text-xl text-muted-foreground">
                       {t('Features.feature3.description') || "Join leaderboards and friendly competitions. Share achievements and celebrate successes together."}
                     </p>
                   </div>
@@ -292,10 +292,10 @@ export default function Home() {
                 {/* Feature 4 */}
                 <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-4">
                   <div className="max-w-md">
-                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                    <h3 className="text-2xl md:text-5xl font-bold mb-6">
                       {t('Features.feature4.title') || "Earn Rewards"}
                     </h3>
-                    <p className="text-base md:text-lg text-muted-foreground">
+                    <p className="text-base md:text-xl text-muted-foreground">
                       {t('Features.feature4.description') || "Unlock achievements and earn rewards as you complete challenges. Redeem points for exclusive content and benefits."}
                     </p>
                   </div>
