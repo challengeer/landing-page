@@ -5,13 +5,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import { DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
+import { DevicePhoneMobileIcon, LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
+
+  const handleLanguageChange = (lang: string) => {
+    setLanguage(lang);
+    // Update URL without full page reload
+    window.history.pushState({}, '', `/${lang}`);
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -40,10 +51,22 @@ export default function Home() {
             </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <LanguageSwitcher />
-            <Button variant="outline" size="lg" asChild>
-              <Link href="#download">{t('Navigation.getStarted')}</Link>
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="flex items-center gap-2">
+                  <LanguageIcon className="h-4 w-4" />
+                  <span>{language.toUpperCase()}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
+                  Slovak
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>

@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLanguage, languages } from '@/contexts/LanguageContext';
 
-export default function LanguagePage({ params }: { params: { lang: string } }) {
-  const { lang } = params;
+interface LangParams {
+  lang: string;
+}
+
+export default function LanguagePage({ params }: { params: LangParams | Promise<LangParams> }) {
+  // Unwrap params using React.use()
+  const unwrappedParams = React.use(params as Promise<LangParams>);
+  const { lang } = unwrappedParams;
+  
   const { setLanguage } = useLanguage();
   const router = useRouter();
 
