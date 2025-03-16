@@ -3,17 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
-import { DevicePhoneMobileIcon, LanguageIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 // Pexels images of people having fun
 const communityImages = [
@@ -55,11 +55,14 @@ export default function Home() {
   const { t, language, setLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
   const isMobile = window.innerWidth < 768;
+  const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
     // Update URL without full page reload
     window.history.pushState({}, '', `/${lang}`);
+    // Close dropdown after selection
+    setFooterDropdownOpen(false);
   };
 
   return (
@@ -214,11 +217,11 @@ export default function Home() {
               <Image src="/icon.png" alt="Challengeer Logo" width={32} height={32} className="object-contain rounded-md" />
               <span className="text-sm font-medium">Challengeer</span>
             </div>
-            <DropdownMenu>
+            <DropdownMenu open={footerDropdownOpen} onOpenChange={setFooterDropdownOpen}>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center gap-2 h-8">
                   <span className="text-xs">{language.toLowerCase()}</span>
-                  <ChevronDownIcon className="h-3 w-3" />
+                  {footerDropdownOpen ? <ChevronUpIcon className="h-3 w-3" /> : <ChevronDownIcon className="h-3 w-3" />}
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="center">
