@@ -9,20 +9,23 @@
     "title": "Helping people achieve their goals"
   },
   "Features": {
-    "title": "Connect with people people you know",
-    "description": "Find and connect with your friends and family on Challengeer",
-    "createChallenges": {
-      "title": "Create Challenges",
-      "description": "Create custom challenges for your friends with specific goals, timeframes, and rewards."
+    "feature1": {
+      "title": "Connect with people people you know",
+      "description": "Find and connect with your friends and family on Challengeer"
     },
-    "socialLeaderboards": {
-      "title": "Social Leaderboards",
-      "description": "Compete with friends and see who's at the top with real-time leaderboards and rankings."
+    "feature2": {
+      "title": "Create fun challenges",
+      "description": "This motivates you to push even further"
     },
-    "achievementTracking": {
-      "title": "Achievement Tracking",
-      "description": "Track your progress, earn badges, and showcase your achievements on your profile."
+    "feature3": {
+      "title": "Post your result",
+      "description": "This motivates you to push even further"
+    },
+    "feature4": {
+      "title": "Keep working",
+      "description": "This motivates you to push even further"
     }
+
   },
   "HowItWorks": {
     "title": "How Challengeer Works",

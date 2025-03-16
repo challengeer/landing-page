@@ -9,21 +9,23 @@
     "title": "Pomáhame ľuďom dosiahnuť svoje ciele"
   },
   "Features": {
-    "badge": "Funkcie",
-    "title": "Spojte sa s ľuďmi, ktorých poznáte",
-    "description": "Nájdite a spojte sa s priateľmi a rodinou na Challengeer",
-    "createChallenges": {
-      "title": "Vytvorte výzvy",
-      "description": "Vytvorte vlastné výzvy pre svojich priateľov so špecifickými cieľmi, časovými rámcami a odmenami."
+    "feature1": {
+      "title": "Spojte sa s ľuďmi, ktorých poznáte",
+      "description": "Nájdite a spojte sa s priateľmi a rodinou na Challengeer"
     },
-    "socialLeaderboards": {
-      "title": "Sociálne rebríčky",
-      "description": "Súťažte s priateľmi a sledujte, kto je na vrchole s rebríčkami v reálnom čase."
+    "feature2": {
+      "title": "Vytvárajte výzvy",
+      "description": "Toto vás motivuje, aby ste sa do toho vložili ešte viac"
     },
-    "achievementTracking": {
-      "title": "Sledovanie úspechov",
-      "description": "Sledujte svoj pokrok, získavajte odznaky a prezentujte svoje úspechy na svojom profile."
+    "feature3": {
+      "title": "Zdieľajte svoje výsledky",
+      "description": "Toto vás motivuje, aby ste sa do toho vložili ešte viac"
+    },
+    "feature4": {
+      "title": "Nevzdávajte sa",
+      "description": "Toto vás motivuje, aby ste sa do toho vložili ešte viac"
     }
+
   },
   "HowItWorks": {
     "title": "Ako Challengeer funguje",
