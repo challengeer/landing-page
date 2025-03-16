@@ -17,6 +17,7 @@ import {
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
+  const isMobile = window.innerWidth < 768;
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
@@ -123,11 +124,32 @@ export default function Home() {
 
         <section className="py-12 md:py-24 lg:py-32">
           <div className="container items-center justify-center">
-            <h1 className="text-6xl font-bold text-center">
+            <h1 className="text-4xl sm:text-6xl font-bold text-center">
               {t('Hero.title')}
             </h1>
+            <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
+              <Link href="#">
+                <Image
+                  src="/app-store.svg"
+                  alt="App Store Download"
+                  width={isMobile ? 150 : 200}
+                  height={isMobile ? 50 : 60}
+                  className="object-contain"
+                  priority
+                />
+              </Link>
+              <Link href="#">
+                <Image
+                  src="/google-play.svg"
+                  alt="Google Play Download"
+                  width={isMobile ? 150 : 200}
+                  height={isMobile ? 50 : 60}
+                  className="object-contain"
+                  priority
+                />
+              </Link>
+            </div>
           </div>
-          
         </section>
 
 
