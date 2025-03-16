@@ -209,6 +209,27 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t py-6 md:py-0">
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Image src="/icon.png" alt="Challengeer Logo" width={32} height={32} className="object-contain rounded-md" />
+              <span className="text-sm font-medium">Challengeer</span>
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="flex items-center gap-2 h-8">
+                  <span className="text-xs">{language.toLowerCase()}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
+                  Slovak
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
           <p className="text-sm font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
           <div className="flex gap-4">
             <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-primary">
