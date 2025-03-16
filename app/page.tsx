@@ -125,7 +125,7 @@ export default function Home() {
         {/* Hero section */}
         <section className="py-12 md:py-24 lg:py-32">
           <div className="container items-center justify-center">
-            <h1 className="text-4xl sm:text-6xl font-bold text-center">
+            <h1 className="text-4xl sm:text-7xl font-bold text-center">
               {t('Hero.title')}
             </h1>
             <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
@@ -167,7 +167,7 @@ export default function Home() {
                 inViewThreshold: 0.6,
               }}
             >
-              <CarouselContent className="-ml-2 md:-ml-4">
+              <CarouselContent className="-ml-2 md:-ml-4" >
                 {communityImages.map((image, index) => (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                     <div className="relative aspect-[2/3] w-full overflow-hidden">
@@ -197,11 +197,11 @@ export default function Home() {
         </section>
 
         {/* Gradient section */}
-        <section className="py-24 md:py-48 relative overflow-hidden">
+        <section className="py-24 md:py-36 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 z-0"></div>
           <div className="container relative z-10 px-6 md:px-10">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-6xl font-bold text-white leading-tight">
+              <h2 className="text-3xl md:text-7xl font-bold text-white leading-tight">
                 Something that with friends it is easier to push yourself
               </h2>
             </div>
