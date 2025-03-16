@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { DevicePhoneMobileIcon, LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -218,9 +218,10 @@ export default function Home() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center gap-2 h-8">
                   <span className="text-xs">{language.toLowerCase()}</span>
+                  <ChevronDownIcon className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
+              <DropdownMenuContent align="center">
                 <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
                   English
                 </DropdownMenuItem>
