@@ -194,6 +194,26 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Features section */}
+        <section id="features" className="py-12 md:py-24 overflow-hidden">
+          <div className="container px-6 md:px-10">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">          
+              
+              {/* Mockup image */}
+              <div className="flex-1 relative">
+                <Image
+                  src="/mockups/Iphone.png"
+                  alt="Challengeer App Mockup"
+                  width={250}
+                  height={300}
+                  className="object-contain mx-auto"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Download section */}
         <section className="py-12 md:py-24 overflow-hidden">
           <div className="container px-6 md:px-10">
