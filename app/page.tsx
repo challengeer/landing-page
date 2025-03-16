@@ -13,7 +13,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Pexels images of people having fun
 const communityImages = [
@@ -50,8 +50,61 @@ const communityImages = [
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
   const currentYear = new Date().getFullYear();
-  const isMobile = window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState(false);
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
+  const [isPhoneFixed, setIsPhoneFixed] = useState(false);
+  const featuresRef = useRef<HTMLDivElement>(null);
+  const phoneContainerRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
+
+  // Handle window resize and initial mobile detection
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    // Set initial value
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Clean up
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle scroll for features section
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!featuresRef.current || !phoneRef.current || !phoneContainerRef.current || isMobile) return;
+
+      const featuresSection = featuresRef.current;
+      const phoneContainer = phoneContainerRef.current;
+
+      // Get the position of the features section
+      const featuresSectionRect = featuresSection.getBoundingClientRect();
+      const featuresSectionTop = featuresSectionRect.top;
+      const featuresSectionBottom = featuresSectionRect.bottom;
+
+      // Check if we're in the features section
+      if (featuresSectionTop <= 0 && featuresSectionBottom >= window.innerHeight) {
+        // We're in the features section, make the phone fixed
+        setIsPhoneFixed(true);
+      } else {
+        // We're outside the features section, make the phone relative
+        setIsPhoneFixed(false);
+      }
+    };
+
+    // Add event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check
+    handleScroll();
+
+    // Clean up
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isMobile]);
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
@@ -195,26 +248,84 @@ export default function Home() {
         </section>
 
         {/* Features section */}
-        <section id="features" className="py-12 md:py-24 overflow-hidden">
-          <div className="container px-10 md:px-20">
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-              {/* Features text */}
-              <div className="flex-1 space-y-6">
-                <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-                  {t('Features.title')}
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                  {t('Features.description')}
-                </p>
+        <section id="features" className="py-24 md:py-32 relative" ref={featuresRef}>
+          <div className="container px-6 md:px-10">
+            <div className="md:flex">
+              {/* Left column - Features content */}
+              <div className="md:w-1/2 md:pr-12">
+                {/* Feature 1 */}
+                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-1">
+                  <div className="max-w-md">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                      {t('Features.feature1.title') || "Create Challenges"}
+                    </h3>
+                    <p className="text-base md:text-lg text-muted-foreground">
+                      {t('Features.feature1.description') || "Create custom challenges for yourself or invite friends to join. Set goals, timeframes, and rewards to stay motivated."}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Feature 2 */}
+                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-2">
+                  <div className="max-w-md">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                      {t('Features.feature2.title') || "Track Progress"}
+                    </h3>
+                    <p className="text-base md:text-lg text-muted-foreground">
+                      {t('Features.feature2.description') || "Monitor your achievements with detailed statistics and visualizations. See your improvement over time and stay motivated."}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Feature 3 */}
+                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-3">
+                  <div className="max-w-md">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                      {t('Features.feature3.title') || "Compete with Friends"}
+                    </h3>
+                    <p className="text-base md:text-lg text-muted-foreground">
+                      {t('Features.feature3.description') || "Join leaderboards and friendly competitions. Share achievements and celebrate successes together."}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Feature 4 */}
+                <div className="feature-item min-h-[90vh] flex flex-col justify-center py-16" id="feature-4">
+                  <div className="max-w-md">
+                    <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                      {t('Features.feature4.title') || "Earn Rewards"}
+                    </h3>
+                    <p className="text-base md:text-lg text-muted-foreground">
+                      {t('Features.feature4.description') || "Unlock achievements and earn rewards as you complete challenges. Redeem points for exclusive content and benefits."}
+                    </p>
+                  </div>
+                </div>
               </div>
-              {/* Mockup image */}
-              <div className="flex-1 relative">
+
+              {/* Right column - Phone mockup */}
+              <div className="hidden md:flex md:w-1/2 md:justify-center md:items-start relative" ref={phoneContainerRef}>
+                <div className="sticky top-24 flex justify-center">
+                  <Image
+                    src="/mockups/Iphone.png"
+                    alt="Challengeer App Mockup"
+                    width={300}
+                    height={600}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile mockup (only visible on mobile) */}
+            <div className="md:hidden w-full mb-16">
+              <div className="flex justify-center">
                 <Image
                   src="/mockups/Iphone.png"
                   alt="Challengeer App Mockup"
-                  width={250}
-                  height={300}
-                  className="object-contain mx-auto"
+                  width={280}
+                  height={560}
+                  className="object-contain"
                   priority
                 />
               </div>
