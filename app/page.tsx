@@ -7,12 +7,49 @@ import { Input } from "@/components/ui/input";
 import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { DevicePhoneMobileIcon, LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+// Pexels images of people having fun
+const communityImages = [
+  {
+    src: "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
+    alt: "People jumping at sunset"
+  },
+  {
+    src: "https://images.pexels.com/photos/1153253/pexels-photo-1153253.jpeg",
+    alt: "Friends enjoying time together"
+  },
+  {
+    src: "https://images.pexels.com/photos/2923156/pexels-photo-2923156.jpeg",
+    alt: "Group celebrating outdoors"
+  },
+  {
+    src: "https://images.pexels.com/photos/1405528/pexels-photo-1405528.jpeg",
+    alt: "People at a concert"
+  },
+  {
+    src: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
+    alt: "Friends hiking in mountains"
+  },
+  {
+    src: "https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg",
+    alt: "People exercising together"
+  },
+  {
+    src: "https://images.pexels.com/photos/8436744/pexels-photo-8436744.jpeg",
+    alt: "Friends enjoying a meal"
+  },
+  {
+    src: "https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg",
+    alt: "Team collaboration"
+  }
+];
 
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
@@ -152,6 +189,48 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Infinite scroll section */}
+        <section id="infinite-scroll" className="py-12 overflow-hidden">
+          <div className="container-fluid px-0">            
+            <Carousel 
+              className="max-w-full"
+              opts={{
+                align: "start",
+                loop: true,
+                dragFree: true,
+                containScroll: "trimSnaps",
+                slidesToScroll: 1,
+                inViewThreshold: 0.6,
+              }}
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {communityImages.map((image, index) => (
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
+                    <div className="relative aspect-[3/4] w-full overflow-hidden">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill
+                        className="object-cover rounded-lg"
+                        unoptimized
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-6">
+                <div className="flex gap-1">
+                  {communityImages.map((_, index) => (
+                    <div 
+                      key={index} 
+                      className="w-2 h-2 rounded-full bg-muted-foreground/30"
+                    />
+                  ))}
+                </div>
+              </div>
+            </Carousel>
+          </div>
+        </section>
 
         {/* Features section */}
         <section id="features" className="bg-muted py-12 md:py-24 lg:py-32">
