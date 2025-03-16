@@ -120,45 +120,6 @@ export default function Home() {
       <main className="flex-1 ">
 
         {/* Hero section */}
-        {/* <section className="py-6 md:py-12 lg:py-16 xl:py-24">
-          <div className="container px-6 md:px-10">
-            <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h1 className="text-2xl font-bold sm:text-2xl xl:text-6xl/none">
-                    {t('Hero.title')}
-                  </h1>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    {t('Hero.description')}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" asChild className="p-6">
-                    <Link href="#download" className="inline-flex items-center">
-                      {t('Hero.downloadNow')}
-                      <ChevronRightIcon className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild className="p-6">
-                    <Link href="#how-it-works">{t('Hero.learnMore')}</Link>
-                  </Button>
-                </div>
-              </div>
-              <div className="flex items-center justify-center">
-                <div className="relative h-[500px] w-[250px] overflow-hidden rounded-xl border-8 border-foreground/10 shadow-xl">
-                  <Image
-                    src="/UserPage.png"
-                    alt="Challengeer app screenshot"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> */}
-
         <section className="py-12 md:py-24 lg:py-32">
           <div className="container items-center justify-center">
             <h1 className="text-4xl sm:text-6xl font-bold text-center">
