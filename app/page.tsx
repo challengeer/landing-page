@@ -18,36 +18,32 @@ import { useState } from "react";
 // Pexels images of people having fun
 const communityImages = [
   {
-    src: "https://images.pexels.com/photos/3768894/pexels-photo-3768894.jpeg",
+    src: "/images/carousel/basketball.png",
     alt: "People jumping at sunset"
   },
   {
-    src: "https://images.pexels.com/photos/1153253/pexels-photo-1153253.jpeg",
+    src: "/images/carousel/climbing.png",
     alt: "Friends enjoying time together"
   },
   {
-    src: "https://images.pexels.com/photos/2923156/pexels-photo-2923156.jpeg",
+    src: "/images/carousel/running.png",
     alt: "Group celebrating outdoors"
   },
   {
-    src: "https://images.pexels.com/photos/1405528/pexels-photo-1405528.jpeg",
+    src: "/images/carousel/cycling.png",
     alt: "People at a concert"
   },
   {
-    src: "https://images.pexels.com/photos/2253275/pexels-photo-2253275.jpeg",
+    src: "/images/carousel/hiking.png",
     alt: "Friends hiking in mountains"
   },
   {
-    src: "https://images.pexels.com/photos/1267697/pexels-photo-1267697.jpeg",
+    src: "/images/carousel/yoga.png",
     alt: "People exercising together"
   },
   {
-    src: "https://images.pexels.com/photos/8436744/pexels-photo-8436744.jpeg",
+    src: "/images/carousel/skiing.png",
     alt: "Friends enjoying a meal"
-  },
-  {
-    src: "https://images.pexels.com/photos/3184398/pexels-photo-3184398.jpeg",
-    alt: "Team collaboration"
   }
 ];
 
