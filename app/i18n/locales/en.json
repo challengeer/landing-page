@@ -1,0 +1,71 @@
+{
+  "Navigation": {
+    "features": "Features",
+    "howItWorks": "How It Works",
+    "download": "Download",
+    "getStarted": "Get Started"
+  },
+  "Hero": {
+    "title": "Challenge Your Friends. Prove Your Skills.",
+    "description": "Challengeer is the ultimate social app that lets you challenge friends, track achievements, and show off your skills in friendly competitions.",
+    "downloadNow": "Download Now",
+    "learnMore": "Learn More"
+  },
+  "Features": {
+    "badge": "Features",
+    "title": "Everything You Need to Challenge and Win",
+    "description": "Challengeer provides all the tools you need to create, participate in, and win challenges with your friends.",
+    "createChallenges": {
+      "title": "Create Challenges",
+      "description": "Create custom challenges for your friends with specific goals, timeframes, and rewards."
+    },
+    "socialLeaderboards": {
+      "title": "Social Leaderboards",
+      "description": "Compete with friends and see who's at the top with real-time leaderboards and rankings."
+    },
+    "achievementTracking": {
+      "title": "Achievement Tracking",
+      "description": "Track your progress, earn badges, and showcase your achievements on your profile."
+    }
+  },
+  "HowItWorks": {
+    "title": "How Challengeer Works",
+    "description": "Get started with Challengeer in just a few simple steps.",
+    "steps": {
+      "1": {
+        "title": "Download the App",
+        "description": "Download Challengeer from the App Store or Google Play Store."
+      },
+      "2": {
+        "title": "Connect with Friends",
+        "description": "Find and connect with your friends to start challenging them."
+      },
+      "3": {
+        "title": "Create & Accept Challenges",
+        "description": "Start creating challenges or accept ones from your friends."
+      }
+    }
+  },
+  "CallToAction": {
+    "title": "Ready to Challenge Your Friends?",
+    "description": "Join thousands of users already creating and completing challenges. Download Challengeer today and start your first challenge!",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "Download": {
+    "title": "Download Challengeer Today",
+    "description": "Be the first to know when we launch new features and updates.",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "privacyText": "We'll keep you updated on our launch and new features.",
+    "termsLink": "Terms & Conditions",
+    "downloadAppStore": "Download on App Store",
+    "downloadGooglePlay": "Get it on Google Play"
+  },
+  "Footer": {
+    "rights": "© 2024 Challengeer. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact"
+  }
+} 
