@@ -1,0 +1,71 @@
+{
+  "Navigation": {
+    "features": "Funkcie",
+    "howItWorks": "Ako to funguje",
+    "download": "Stiahnuť",
+    "getStarted": "Začať"
+  },
+  "Hero": {
+    "title": "Vyzvite svojich priateľov. Dokážte svoje schopnosti.",
+    "description": "Challengeer je ultimátna sociálna aplikácia, ktorá vám umožňuje vyzvať priateľov, sledovať úspechy a predviesť svoje schopnosti v priateľských súťažiach.",
+    "downloadNow": "Stiahnuť teraz",
+    "learnMore": "Zistiť viac"
+  },
+  "Features": {
+    "badge": "Funkcie",
+    "title": "Všetko, čo potrebujete na výzvy a víťazstvo",
+    "description": "Challengeer poskytuje všetky nástroje, ktoré potrebujete na vytváranie, účasť a víťazstvo vo výzvach s priateľmi.",
+    "createChallenges": {
+      "title": "Vytvorte výzvy",
+      "description": "Vytvorte vlastné výzvy pre svojich priateľov so špecifickými cieľmi, časovými rámcami a odmenami."
+    },
+    "socialLeaderboards": {
+      "title": "Sociálne rebríčky",
+      "description": "Súťažte s priateľmi a sledujte, kto je na vrchole s rebríčkami v reálnom čase."
+    },
+    "achievementTracking": {
+      "title": "Sledovanie úspechov",
+      "description": "Sledujte svoj pokrok, získavajte odznaky a prezentujte svoje úspechy na svojom profile."
+    }
+  },
+  "HowItWorks": {
+    "title": "Ako Challengeer funguje",
+    "description": "Začnite s Challengeer-om v niekoľkých jednoduchých krokoch.",
+    "steps": {
+      "1": {
+        "title": "Stiahnite si aplikáciu",
+        "description": "Stiahnite si Challengeer z App Store alebo Google Play Store."
+      },
+      "2": {
+        "title": "Spojte sa s priateľmi",
+        "description": "Nájdite a spojte sa s priateľmi, aby ste ich mohli vyzvať."
+      },
+      "3": {
+        "title": "Vytvárajte a prijímajte výzvy",
+        "description": "Začnite vytvárať výzvy alebo prijímajte výzvy od priateľov."
+      }
+    }
+  },
+  "CallToAction": {
+    "title": "Pripravení vyzvať svojich priateľov?",
+    "description": "Pripojte sa k tisícom používateľov, ktorí už vytvárajú a plnia výzvy. Stiahnite si Challengeer ešte dnes a začnite svoju prvú výzvu!",
+    "appStore": "App Store",
+    "googlePlay": "Google Play"
+  },
+  "Download": {
+    "title": "Stiahnite si Challengeer ešte dnes",
+    "description": "Buďte prví, kto sa dozvie o nových funkciách a aktualizáciách.",
+    "emailPlaceholder": "Zadajte svoj email",
+    "subscribe": "Prihlásiť sa",
+    "privacyText": "Budeme vás informovať o spustení a nových funkciách.",
+    "termsLink": "Podmienky používania",
+    "downloadAppStore": "Stiahnuť z App Store",
+    "downloadGooglePlay": "Získať na Google Play"
+  },
+  "Footer": {
+    "rights": "© {year} Challengeer. Všetky práva vyhradené.",
+    "privacy": "Ochrana súkromia",
+    "terms": "Podmienky služby",
+    "contact": "Kontakt"
+  }
+} 
