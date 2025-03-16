@@ -1,11 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { TrophyIcon, UsersIcon, BoltIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { DevicePhoneMobileIcon } from "@heroicons/react/24/solid";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Home() {
+  const { t } = useLanguage();
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -23,18 +30,19 @@ export default function Home() {
           </div>
           <nav className="hidden md:flex gap-6">
             <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
-              Features
+              {t('Navigation.features')}
             </Link>
             <Link href="#how-it-works" className="text-sm font-medium transition-colors hover:text-primary">
-              How It Works
+              {t('Navigation.howItWorks')}
             </Link>
             <Link href="#download" className="text-sm font-medium transition-colors hover:text-primary">
-              Download
+              {t('Navigation.download')}
             </Link>
           </nav>
-          <div>
+          <div className="flex items-center gap-4">
+            <LanguageSwitcher />
             <Button variant="outline" size="lg" asChild>
-              <Link href="#download">Get Started</Link>
+              <Link href="#download">{t('Navigation.getStarted')}</Link>
             </Button>
           </div>
         </div>
@@ -46,22 +54,21 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-2xl font-bold sm:text-2xl xl:text-6xl/none">
-                    <span className="text-primary">Challenge</span> Your Friends.<br /> Prove Your <span className="text-primary">Skills</span>.
+                    {t('Hero.title')}
                   </h1>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                    Challengeer is the ultimate social app that lets you challenge friends, track achievements, and show
-                    off your skills in friendly competitions.
+                    {t('Hero.description')}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
                   <Button size="lg" asChild className="p-6">
                     <Link href="#download" className="inline-flex items-center">
-                      Download Now
+                      {t('Hero.downloadNow')}
                       <ChevronRightIcon className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild className="p-6">
-                    <Link href="#how-it-works">Learn More</Link>
+                    <Link href="#how-it-works">{t('Hero.learnMore')}</Link>
                   </Button>
                 </div>
               </div>
@@ -85,14 +92,13 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground">
-                  Features
+                  {t('Features.badge')}
                 </div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                  Everything You Need to Challenge and Win
+                  {t('Features.title')}
                 </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-                  Challengeer provides all the tools you need to create, participate in, and win challenges with your
-                  friends.
+                  {t('Features.description')}
                 </p>
               </div>
             </div>
@@ -101,27 +107,27 @@ export default function Home() {
                 <div className="rounded-full bg-primary/10 p-3">
                   <TrophyIcon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Create Challenges</h3>
+                <h3 className="text-xl font-bold">{t('Features.createChallenges.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Create custom challenges for your friends with specific goals, timeframes, and rewards.
+                  {t('Features.createChallenges.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
                 <div className="rounded-full bg-primary/10 p-3">
                   <UsersIcon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Social Leaderboards</h3>
+                <h3 className="text-xl font-bold">{t('Features.socialLeaderboards.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Compete with friends and see who{"'"}s at the top with real-time leaderboards and rankings.
+                  {t('Features.socialLeaderboards.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg border p-6 shadow-sm">
                 <div className="rounded-full bg-primary/10 p-3">
                   <BoltIcon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold">Achievement Tracking</h3>
+                <h3 className="text-xl font-bold">{t('Features.achievementTracking.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Track your progress, earn badges, and showcase your achievements on your profile.
+                  {t('Features.achievementTracking.description')}
                 </p>
               </div>
             </div>
@@ -132,9 +138,11 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">How Challengeer Works</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+                  {t('HowItWorks.title')}
+                </h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-                  Get started with Challengeer in just a few simple steps.
+                  {t('HowItWorks.description')}
                 </p>
               </div>
             </div>
@@ -143,27 +151,27 @@ export default function Home() {
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
                   1
                 </div>
-                <h3 className="text-xl font-bold">Download the App</h3>
+                <h3 className="text-xl font-bold">{t('HowItWorks.steps.1.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Download Challengeer from the App Store or Google Play Store.
+                  {t('HowItWorks.steps.1.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg p-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
                   2
                 </div>
-                <h3 className="text-xl font-bold">Connect with Friends</h3>
+                <h3 className="text-xl font-bold">{t('HowItWorks.steps.2.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Find and connect with your friends to start challenging them.
+                  {t('HowItWorks.steps.2.description')}
                 </p>
               </div>
               <div className="flex flex-col items-center space-y-2 rounded-lg p-6">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-xl font-bold text-primary-foreground">
                   3
                 </div>
-                <h3 className="text-xl font-bold">Create & Accept Challenges</h3>
+                <h3 className="text-xl font-bold">{t('HowItWorks.steps.3.title')}</h3>
                 <p className="text-center text-muted-foreground">
-                  Start creating challenges or accept ones from your friends.
+                  {t('HowItWorks.steps.3.description')}
                 </p>
               </div>
             </div>
@@ -176,11 +184,10 @@ export default function Home() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    Ready to Challenge Your Friends?
+                    {t('CallToAction.title')}
                   </h2>
                   <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                    Join thousands of users already creating and completing challenges. Download Challengeer today and
-                    start your first challenge!
+                    {t('CallToAction.description')}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -188,15 +195,15 @@ export default function Home() {
                     <Link href="#download" className="flex-row items-center gap-2">
                       <div className="flex items-center gap-2">
                         <DevicePhoneMobileIcon className="h-5 w-5" />
-                        App Store
+                        {t('CallToAction.appStore')}
                       </div>
                     </Link>
                   </Button>
                   <Button variant="outline" className="gap-2 p-6" size="lg">
                     <Link href="#download" className="flex-row items-center gap-2">
-                      <div className="flex items-center gap-2"> {/* No other solution found to align the icon and text */}
+                      <div className="flex items-center gap-2">
                         <DevicePhoneMobileIcon className="h-5 w-5" />
-                        Google Play
+                        {t('CallToAction.googlePlay')}
                       </div>
                     </Link>
                   </Button>
@@ -229,20 +236,26 @@ export default function Home() {
         <section id="download" className="py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6">
             <div className="space-y-3">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Download Challengeer Today</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
+                {t('Download.title')}
+              </h2>
               <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                Be the first to know when we launch new features and updates.
+                {t('Download.description')}
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
               <form className="flex flex-col gap-2 sm:flex-row">
-                <Input type="email" placeholder="Enter your email" className="max-w-lg flex-1 p-6" />
-                <Button type="submit" className="p-6">Subscribe</Button>
+                <Input 
+                  type="email" 
+                  placeholder={t('Download.emailPlaceholder')} 
+                  className="max-w-lg flex-1 p-6" 
+                />
+                <Button type="submit" className="p-6">{t('Download.subscribe')}</Button>
               </form>
               <p className="text-xs text-muted-foreground">
-                We{"'"}ll keep you updated on our launch and new features.{" "}
+                {t('Download.privacyText')}{" "}
                 <Link href="/terms" className="underline underline-offset-2">
-                  Terms & Conditions
+                  {t('Download.termsLink')}
                 </Link>
               </p>
             </div>
@@ -250,13 +263,13 @@ export default function Home() {
               <Button size="lg" className="p-6">
                 <Link href="#" className="inline-flex items-center gap-2">
                   <DevicePhoneMobileIcon className="h-5 w-5" />
-                  Download on App Store
+                  {t('Download.downloadAppStore')}
                 </Link>
               </Button>
               <Button variant="outline" size="lg" className="p-6">
                 <Link href="#" className="inline-flex items-center gap-2">
                   <DevicePhoneMobileIcon className="h-5 w-5" />
-                  Get it on Google Play
+                  {t('Download.downloadGooglePlay')}
                 </Link>
               </Button>
             </div>
@@ -267,21 +280,21 @@ export default function Home() {
         <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-4 md:px-6">
           <div className="flex items-center gap-2">
             <Image src="/icon.png" alt="Challengeer Logo" width={32} height={32} className="object-contain rounded-md" />
-            <p className="text-sm font-medium">© {new Date().getFullYear()} Challengeer. All rights reserved.</p>
+            <p className="text-sm font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
           </div>
           <div className="flex gap-4">
             <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              Privacy Policy
+              {t('Footer.privacy')}
             </Link>
             <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              Terms of Service
+              {t('Footer.terms')}
             </Link>
             <Link href="#" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              Contact
+              {t('Footer.contact')}
             </Link>
           </div>
         </div>
       </footer>
     </div>
   );
-}
+} 
