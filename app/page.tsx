@@ -154,7 +154,7 @@ export default function Home() {
         </section>
 
         {/* Infinite scroll section */}
-        <section id="infinite-scroll" className="py-12 overflow-hidden">
+        <section id="infinite-scroll" className="pt-12 pb-24 overflow-hidden">
           <div className="container-fluid px-0">
             <Carousel
               className="max-w-full"
@@ -182,16 +182,6 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex justify-center mt-6">
-                <div className="flex gap-1">
-                  {communityImages.map((_, index) => (
-                    <div
-                      key={index}
-                      className="w-2 h-2 rounded-full bg-muted-foreground/30"
-                    />
-                  ))}
-                </div>
-              </div>
             </Carousel>
           </div>
         </section>
