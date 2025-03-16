@@ -197,6 +197,38 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Download section */}
+        <section className="py-12 md:py-24 overflow-hidden">
+          <div className="container px-6 md:px-10">
+            <div className="text-center bg-muted rounded-lg py-12">
+              <h2 className="text-3xl md:text-5xl font-bold leading-tight">Download for IOS/Android</h2>
+              <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
+                <Link href="#">
+                  <Image
+                    src="/app-store.svg"
+                    alt="App Store Download"
+                    width={isMobile ? 150 : 200}
+                    height={isMobile ? 50 : 60}
+                    className="object-contain"
+                    priority
+                  />
+                </Link>
+                <Link href="#">
+                  <Image
+                    src="/google-play.svg"
+                    alt="Google Play Download"
+                    width={isMobile ? 150 : 200}
+                    height={isMobile ? 50 : 60}
+                    className="object-contain"
+                    priority
+                  />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+        </section>
       </main>
 
       {/* Footer */}
