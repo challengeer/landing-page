@@ -3,7 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
+import { ChevronDownIcon, ChevronUpIcon, SunIcon as SunIconOutline } from "@heroicons/react/24/outline";
+import { SunIcon as SunIconSolid } from "@heroicons/react/24/solid";
 import { LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
@@ -14,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 
 // Pexels images of people having fun
 const communityImages = [
@@ -49,6 +51,7 @@ const communityImages = [
 
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
+  const { theme, setTheme } = useTheme();
   const currentYear = new Date().getFullYear();
   const [isMobile, setIsMobile] = useState(false);
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
@@ -82,55 +85,55 @@ export default function Home() {
 
       const featuresSection = featuresRef.current;
       const featureElements = featureRefs.current;
-      
+
       // Get the position of the features section
       const featuresSectionRect = featuresSection.getBoundingClientRect();
       const featuresSectionTop = featuresSectionRect.top;
       const featuresSectionBottom = featuresSectionRect.bottom;
-      
+
       // Check if we're in the features section
       if (featuresSectionTop <= 0 && featuresSectionBottom >= window.innerHeight) {
         // We're in the features section, make the phone fixed
         setIsPhoneFixed(true);
-        
+
         // Apply fade effects to features
         featureElements.forEach((feature, index) => {
           if (!feature) return;
-          
+
           const rect = feature.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
-          
+
           // Calculate opacity based on position in viewport
           let opacity = 1;
-          
+
           // If element is moving out the top of the viewport
           if (rect.bottom < 150) { // Increased from 100 to 150
             opacity = rect.bottom / 150; // Adjusted divisor to match
           }
-          
+
           // If element is moving out the bottom of the viewport
           if (rect.top > viewportHeight - 150) { // Increased from 100 to 150
             opacity = (viewportHeight - rect.top) / 150; // Adjusted divisor to match
           }
-          
+
           // Apply a power curve for sharper falloff
           opacity = Math.pow(opacity, 3);
-          
+
           // Ensure opacity stays in valid range
           opacity = Math.max(0, Math.min(1, opacity));
-          
+
           // Apply opacity
           feature.style.opacity = opacity.toString();
-          
+
           // Set active feature - element is mostly in viewport
-          if (rect.top < viewportHeight/2 && rect.bottom > viewportHeight/2) {
+          if (rect.top < viewportHeight / 2 && rect.bottom > viewportHeight / 2) {
             setActiveFeature(index + 1);
           }
         });
       } else {
         // We're outside the features section
         setIsPhoneFixed(false);
-        
+
         // Reset opacities
         featureElements.forEach(feature => {
           if (feature) feature.style.opacity = '1';
@@ -296,7 +299,7 @@ export default function Home() {
               {/* Left column - Features content */}
               <div className="md:w-1/2 md:pr-12">
                 {/* Feature 1 */}
-                <div 
+                <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-1"
                   ref={el => { featureRefs.current[0] = el; }}
@@ -312,7 +315,7 @@ export default function Home() {
                 </div>
 
                 {/* Feature 2 */}
-                <div 
+                <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-2"
                   ref={el => { featureRefs.current[1] = el; }}
@@ -328,8 +331,8 @@ export default function Home() {
                 </div>
 
                 {/* Feature 3 */}
-                <div 
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity" 
+                <div
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-3"
                   ref={el => { featureRefs.current[2] = el; }}
                 >
@@ -344,8 +347,8 @@ export default function Home() {
                 </div>
 
                 {/* Feature 4 */}
-                <div 
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity" 
+                <div
+                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-4"
                   ref={el => { featureRefs.current[3] = el; }}
                 >
@@ -444,6 +447,18 @@ export default function Home() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <Button 
+              variant="ghost" 
+              size="default" 
+              className="flex items-center gap-2 h-8 hover:text-primary" 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            >
+              {theme === "dark" ? (
+                <SunIconSolid className="h-6 w-6" />
+              ) : (
+                <SunIconOutline className="h-6 w-6" />
+              )}
+            </Button>
           </div>
           <div className="flex gap-4">
             <Link href="#" className="text-sm font-medium hover:text-primary">
