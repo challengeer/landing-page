@@ -395,7 +395,7 @@ export default function Home() {
         <section className="py-12 md:py-24 overflow-hidden">
           <div className="container px-10 md:px-20">
             <div className="text-center bg-muted rounded-lg py-12">
-              <h2 className="text-3xl md:text-5xl font-bold leading-tight">Download for IOS/Android</h2>
+              <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t('Download.title')}</h2>
               <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
                 <Link href="#">
                   <Image
