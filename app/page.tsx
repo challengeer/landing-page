@@ -160,10 +160,10 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col dark:bg-slate-900">
 
       {/* Header - change this later */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-slate-800/95 dark:supports-[backdrop-filter]:bg-slate-800/60">
         <div className="container px-6 md:px-10 py-4">
           <div className="flex items-center justify-between relative">
             {/* Logo */}
@@ -214,7 +214,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main className="flex-1 ">
+      <main className="flex-1">
 
         {/* Hero section */}
         <section className="py-12 md:py-24 lg:py-32">
@@ -397,7 +397,7 @@ export default function Home() {
         {/* Download section */}
         <section className="py-12 md:py-24 overflow-hidden">
           <div className="container px-10 md:px-20">
-            <div className="text-center bg-muted rounded-lg py-12">
+            <div className="text-center bg-muted dark:bg-slate-800 rounded-lg py-12">
               <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t('Download.title')}</h2>
               <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
                 <Link href="#">
