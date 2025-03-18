@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
+import useMeasure from "react-use-measure";
+import { motion, useMotionValue, animate } from "framer-motion";
 
 // Pexels images of people having fun
 const images = [
@@ -41,6 +43,40 @@ export default function Home() {
     // Close dropdown after selection
     setFooterDropdownOpen(false);
   };
+
+  const duration = 25;
+  let [ref, { width }] = useMeasure();
+
+  const xTranslation = useMotionValue(0);
+
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    let controls;
+    let finalPosition = -width / 2 - 8;
+
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: "linear",
+        duration: duration * (1 - xTranslation.get() / finalPosition),
+        onComplete: () => {
+          setMustFinish(false);
+          setRerender(!rerender);
+        },
+      });
+    } else {
+      controls = animate(xTranslation, [0, finalPosition], {
+        ease: "linear",
+        duration: duration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    }
+
+    return controls?.stop;
+  }, [rerender, xTranslation, duration, width]);
 
   return (
     <div className="flex min-h-screen flex-col dark:bg-slate-900">
@@ -131,7 +167,7 @@ export default function Home() {
         </section>
 
         {/* Infinite scroll section */}
-        <section id="infinite-scroll" className="pt-12 pb-24 overflow-hidden">
+        {/* <section id="infinite-scroll" className="pt-12 pb-24 overflow-hidden">
           <div className="container-fluid px-0">
             <Carousel
               className="max-w-full"
@@ -160,6 +196,37 @@ export default function Home() {
                 ))}
               </CarouselContent>
             </Carousel>
+          </div>
+        </section> */}
+
+        <section id="infinite-scroll" className="mt-12 mb-24">
+          <div className="relative w-screen h-[300px] overflow-hidden left-[50%] right-[50%] -mx-[50vw]">
+            <motion.div
+              className="flex gap-2 md:gap-3 h-full absolute left-0"
+              style={{ x: xTranslation }}
+              ref={ref}
+              onHoverStart={() => {
+                setMustFinish(true);
+              }}
+              onHoverEnd={() => {
+                setMustFinish(false);
+              }}
+            >
+              {[...images, ...images].map((item, idx) => (
+                <motion.div
+                  className="relative aspect-[2/3] h-full overflow-hidden"
+                  key={idx}
+                >
+                  <Image
+                    src={item}
+                    alt={item}
+                    className="object-cover rounded-2xl"
+                    unoptimized
+                    fill
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
