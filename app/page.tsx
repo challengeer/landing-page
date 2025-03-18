@@ -163,13 +163,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col dark:bg-slate-900">
 
       {/* Header - change this later */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-slate-800/95 dark:supports-[backdrop-filter]:bg-slate-800/60">
-        <div className="container px-6 md:px-10 py-4">
+      <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-slate-800/95 dark:supports-[backdrop-filter]:bg-slate-800/60">
+        <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-4">
           <div className="flex items-center justify-between relative">
             {/* Logo */}
             <div className="flex items-center gap-2 z-10">
               <Image
-                src="/icon.png"
+                src="/images/logo.png"
                 alt="Challengeer Logo"
                 width={32}
                 height={32}
@@ -218,14 +218,14 @@ export default function Home() {
 
         {/* Hero section */}
         <section className="py-12 md:py-24 lg:py-32">
-          <div className="container items-center justify-center">
-            <h1 className="text-4xl sm:text-7xl font-bold text-center">
+          <div className="max-w-screen-md mx-auto px-6 md:px-10 items-center justify-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-center">
               {t('Hero.title')}
             </h1>
             <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
               <Link href="#">
                 <Image
-                  src="/app-store.svg"
+                  src="/images/store-badges/app-store.svg"
                   alt="App Store Download"
                   width={isMobile ? 150 : 200}
                   height={isMobile ? 50 : 60}
@@ -235,7 +235,7 @@ export default function Home() {
               </Link>
               <Link href="#">
                 <Image
-                  src="/google-play.svg"
+                  src="/images/store-badges/google-play.svg"
                   alt="Google Play Download"
                   width={isMobile ? 150 : 200}
                   height={isMobile ? 50 : 60}
@@ -283,18 +283,22 @@ export default function Home() {
         {/* Gradient section */}
         <section className="py-24 md:py-36 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-fuchsia-500 to-pink-500 z-0"></div>
-          <div className="container relative z-10 px-6 md:px-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-7xl font-bold text-white leading-tight">
-                Something that with friends it is easier to push yourself
-              </h2>
-            </div>
+          <div className="max-w-screen-xl mx-auto relative z-10 px-6 md:px-10 text-left">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-snug tracking-tight text-white md:text-left">
+              Something that with
+            </h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-snug tracking-tight text-white md:text-center">
+              friends it is easier
+            </h2>
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-snug tracking-tight text-white md:text-right">
+              to push yourself
+            </h2>
           </div>
         </section>
 
         {/* Features section */}
         <section id="features" className="py-24 md:py-32 relative" ref={featuresRef}>
-          <div className="container px-10 md:px-20">
+          <div className="max-w-screen-xl mx-auto px-6 md:px-10">
             <div className="md:flex">
               {/* Left column - Features content */}
               <div className="md:w-1/2 md:pr-12">
@@ -364,17 +368,15 @@ export default function Home() {
               </div>
 
               {/* Right column - Phone mockup */}
-              <div className="hidden md:flex md:w-1/2 md:justify-center md:items-start relative" ref={phoneContainerRef}>
-                <div className="sticky top-24 flex justify-center">
-                  <Image
-                    src="/mockups/Iphone.png"
-                    alt="Challengeer App Mockup"
-                    width={300}
-                    height={600}
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+              <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center" ref={phoneContainerRef}>
+                <Image
+                  src="/images/mockups/phone.png"
+                  alt="Challengeer App Mockup"
+                  width={300}
+                  height={600}
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
 
@@ -382,7 +384,7 @@ export default function Home() {
             <div className="md:hidden w-full mb-16">
               <div className="flex justify-center">
                 <Image
-                  src="/mockups/Iphone.png"
+                  src="/images/mockups/phone.png"
                   alt="Challengeer App Mockup"
                   width={280}
                   height={560}
@@ -396,13 +398,13 @@ export default function Home() {
 
         {/* Download section */}
         <section className="py-12 md:py-24 overflow-hidden">
-          <div className="container px-10 md:px-20">
+          <div className="container mx-auto px-10 md:px-20">
             <div className="text-center bg-muted dark:bg-slate-800 rounded-lg py-12">
               <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t('Download.title')}</h2>
               <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
                 <Link href="#">
                   <Image
-                    src="/app-store.svg"
+                    src="/images/store-badges/app-store.svg"
                     alt="App Store Download"
                     width={isMobile ? 150 : 200}
                     height={isMobile ? 50 : 60}
@@ -412,7 +414,7 @@ export default function Home() {
                 </Link>
                 <Link href="#">
                   <Image
-                    src="/google-play.svg"
+                    src="/images/store-badges/google-play.svg"
                     alt="Google Play Download"
                     width={isMobile ? 150 : 200}
                     height={isMobile ? 50 : 60}
@@ -428,7 +430,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t py-6 md:py-0 text-muted-foreground">
-        <div className="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
           <div className="flex items-center gap-4">
             <p className="text-sm font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
             <DropdownMenu open={footerDropdownOpen} onOpenChange={setFooterDropdownOpen}>
@@ -447,10 +449,10 @@ export default function Home() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-            <Button 
-              variant="ghost" 
-              size="default" 
-              className="flex items-center gap-2 h-8 hover:text-primary" 
+            <Button
+              variant="ghost"
+              size="default"
+              className="flex items-center gap-2 h-8 hover:text-primary"
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               {theme === "dark" ? (
