@@ -18,138 +18,21 @@ import { useState, useEffect, useRef } from "react";
 import { useTheme } from "next-themes";
 
 // Pexels images of people having fun
-const communityImages = [
-  {
-    src: "/images/carousel/basketball.png",
-    alt: "People jumping at sunset"
-  },
-  {
-    src: "/images/carousel/climbing.png",
-    alt: "Friends enjoying time together"
-  },
-  {
-    src: "/images/carousel/running.png",
-    alt: "Group celebrating outdoors"
-  },
-  {
-    src: "/images/carousel/cycling.png",
-    alt: "People at a concert"
-  },
-  {
-    src: "/images/carousel/hiking.png",
-    alt: "Friends hiking in mountains"
-  },
-  {
-    src: "/images/carousel/yoga.png",
-    alt: "People exercising together"
-  },
-  {
-    src: "/images/carousel/skiing.png",
-    alt: "Friends enjoying a meal"
-  }
+const images = [
+  "/images/carousel/basketball.png",
+  "/images/carousel/climbing.png",
+  "/images/carousel/running.png",
+  "/images/carousel/cycling.png",
+  "/images/carousel/hiking.png",
+  "/images/carousel/yoga.png",
+  "/images/carousel/skiing.png",
 ];
 
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
-  const currentYear = new Date().getFullYear();
-  const [isMobile, setIsMobile] = useState(false);
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
-  const [isPhoneFixed, setIsPhoneFixed] = useState(false);
-  const [activeFeature, setActiveFeature] = useState(1);
-  const featuresRef = useRef<HTMLDivElement>(null);
-  const phoneContainerRef = useRef<HTMLDivElement>(null);
-  const phoneRef = useRef<HTMLDivElement>(null);
-  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Handle window resize and initial mobile detection
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    // Set initial value
-    handleResize();
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Clean up
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Handle scroll for features section
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!featuresRef.current || isMobile) return;
-
-      const featuresSection = featuresRef.current;
-      const featureElements = featureRefs.current;
-
-      // Get the position of the features section
-      const featuresSectionRect = featuresSection.getBoundingClientRect();
-      const featuresSectionTop = featuresSectionRect.top;
-      const featuresSectionBottom = featuresSectionRect.bottom;
-
-      // Check if we're in the features section
-      if (featuresSectionTop <= 0 && featuresSectionBottom >= window.innerHeight) {
-        // We're in the features section, make the phone fixed
-        setIsPhoneFixed(true);
-
-        // Apply fade effects to features
-        featureElements.forEach((feature, index) => {
-          if (!feature) return;
-
-          const rect = feature.getBoundingClientRect();
-          const viewportHeight = window.innerHeight;
-
-          // Calculate opacity based on position in viewport
-          let opacity = 1;
-
-          // If element is moving out the top of the viewport
-          if (rect.bottom < 150) { // Increased from 100 to 150
-            opacity = rect.bottom / 150; // Adjusted divisor to match
-          }
-
-          // If element is moving out the bottom of the viewport
-          if (rect.top > viewportHeight - 150) { // Increased from 100 to 150
-            opacity = (viewportHeight - rect.top) / 150; // Adjusted divisor to match
-          }
-
-          // Apply a power curve for sharper falloff
-          opacity = Math.pow(opacity, 3);
-
-          // Ensure opacity stays in valid range
-          opacity = Math.max(0, Math.min(1, opacity));
-
-          // Apply opacity
-          feature.style.opacity = opacity.toString();
-
-          // Set active feature - element is mostly in viewport
-          if (rect.top < viewportHeight / 2 && rect.bottom > viewportHeight / 2) {
-            setActiveFeature(index + 1);
-          }
-        });
-      } else {
-        // We're outside the features section
-        setIsPhoneFixed(false);
-
-        // Reset opacities
-        featureElements.forEach(feature => {
-          if (feature) feature.style.opacity = '1';
-        });
-      }
-    };
-
-    // Add event listener
-    window.addEventListener('scroll', handleScroll);
-
-    // Initial check
-    handleScroll();
-
-    // Clean up
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile]);
+  const currentYear = new Date().getFullYear();
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
@@ -222,13 +105,13 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-center">
               {t('Hero.title')}
             </h1>
-            <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
+            <div className="flex flex-row items-center justify-center gap-4 mt-8">
               <Link href="#">
                 <Image
                   src="/images/store-badges/app-store.svg"
                   alt="App Store Download"
-                  width={isMobile ? 150 : 200}
-                  height={isMobile ? 50 : 60}
+                  width={150}
+                  height={50}
                   className="object-contain"
                   priority
                 />
@@ -237,8 +120,8 @@ export default function Home() {
                 <Image
                   src="/images/store-badges/google-play.svg"
                   alt="Google Play Download"
-                  width={isMobile ? 150 : 200}
-                  height={isMobile ? 50 : 60}
+                  width={150}
+                  height={50}
                   className="object-contain"
                   priority
                 />
@@ -262,15 +145,15 @@ export default function Home() {
               }}
             >
               <CarouselContent className="-ml-2 md:-ml-4" >
-                {communityImages.map((image, index) => (
+                {images.map((image, index) => (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
                     <div className="relative aspect-[2/3] w-full overflow-hidden">
                       <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
+                        src={image}
+                        alt={image}
                         className="object-cover rounded-lg"
                         unoptimized
+                        fill
                       />
                     </div>
                   </CarouselItem>
@@ -297,7 +180,7 @@ export default function Home() {
         </section>
 
         {/* Features section */}
-        <section id="features" className="py-24 md:py-32 relative" ref={featuresRef}>
+        <section id="features" className="py-24 md:py-32 relative">
           <div className="max-w-screen-xl mx-auto px-6 md:px-10">
             <div className="md:flex">
               {/* Left column - Features content */}
@@ -306,7 +189,6 @@ export default function Home() {
                 <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-1"
-                  ref={el => { featureRefs.current[0] = el; }}
                 >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
@@ -322,7 +204,6 @@ export default function Home() {
                 <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-2"
-                  ref={el => { featureRefs.current[1] = el; }}
                 >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
@@ -338,7 +219,6 @@ export default function Home() {
                 <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-3"
-                  ref={el => { featureRefs.current[2] = el; }}
                 >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
@@ -354,7 +234,6 @@ export default function Home() {
                 <div
                   className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
                   id="feature-4"
-                  ref={el => { featureRefs.current[3] = el; }}
                 >
                   <div className="max-w-md">
                     <h3 className="text-2xl md:text-5xl font-bold mb-6">
@@ -368,7 +247,7 @@ export default function Home() {
               </div>
 
               {/* Right column - Phone mockup */}
-              <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center" ref={phoneContainerRef}>
+              <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center">
                 <Image
                   src="/images/mockups/phone.png"
                   alt="Challengeer App Mockup"
@@ -398,16 +277,16 @@ export default function Home() {
 
         {/* Download section */}
         <section className="py-12 md:py-24 overflow-hidden">
-          <div className="container mx-auto px-10 md:px-20">
-            <div className="text-center bg-muted dark:bg-slate-800 rounded-lg py-12">
-              <h2 className="text-3xl md:text-5xl font-bold leading-tight">{t('Download.title')}</h2>
-              <div className="flex flex-row items-center justify-center gap-4 sm:gap-8 mt-8">
+          <div className="max-w-screen-xl mx-auto px-6 md:px-10">
+            <div className="text-center bg-muted dark:bg-neutral-800 rounded-2xl py-12 px-4">
+              <h2 className="text-3xl sm:text-4xl font-bold leading-tight">{t('Download.title')}</h2>
+              <div className="flex flex-row items-center justify-center gap-4 mt-8">
                 <Link href="#">
                   <Image
                     src="/images/store-badges/app-store.svg"
                     alt="App Store Download"
-                    width={isMobile ? 150 : 200}
-                    height={isMobile ? 50 : 60}
+                    width={150}
+                    height={50}
                     className="object-contain"
                     priority
                   />
@@ -416,8 +295,8 @@ export default function Home() {
                   <Image
                     src="/images/store-badges/google-play.svg"
                     alt="Google Play Download"
-                    width={isMobile ? 150 : 200}
-                    height={isMobile ? 50 : 60}
+                    width={150}
+                    height={50}
                     className="object-contain"
                     priority
                   />
