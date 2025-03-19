@@ -1,39 +1,36 @@
-# syntax = docker/dockerfile:1
+# Step 1: Use the official Node.js image
+FROM node:18 AS builder
 
-FROM node:20-alpine AS base
-
+# Step 2: Set the working directory in the container
 WORKDIR /app
-ENV NEXT_TELEMETRY_DISABLED=1
 
-# Dependencies layer
-FROM base AS deps
+# Step 3: Copy package.json and package-lock.json (or yarn.lock) for npm or yarn
 COPY package.json package-lock.json ./
-RUN npm ci --only=production
 
-# Builder layer
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
+# Step 4: Install dependencies
+RUN npm install
+
+# Step 5: Copy the rest of the Next.js app code into the container
 COPY . .
+
+# Step 6: Build the Next.js app
 RUN npm run build
 
-# Production layer
-FROM node:20-alpine AS runner
+# Step 7: Create the production image from the build
+FROM node:18 AS runner
+
 WORKDIR /app
 
-ENV NODE_ENV=production
-ENV PORT=3000
+# Step 8: Install only production dependencies
+COPY --from=builder /app/package.json /app/package-lock.json ./
+RUN npm install --production
 
-# Create non-root user
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
+# Step 9: Copy the build output from the builder stage
+COPY --from=builder /app/.next /app/.next
+COPY --from=builder /app/public /app/public
 
-# Copy only necessary files
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# Step 10: Expose the port Next.js will run on
+EXPOSE 3000
 
-USER nextjs
-EXPOSE $PORT
-ENV HOSTNAME="0.0.0.0"
-
-CMD ["node", "server.js"]
+# Step 11: Start the Next.js app in production mode
+CMD ["npm", "start"]
