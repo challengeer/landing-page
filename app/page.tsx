@@ -11,10 +11,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useTheme } from "next-themes";
-import useMeasure from "react-use-measure";
-import { motion, useMotionValue, animate } from "framer-motion";
 
 // Pexels images of people having fun
 const images = [
@@ -40,40 +38,6 @@ export default function Home() {
     // Close dropdown after selection
     setFooterDropdownOpen(false);
   };
-
-  const duration = 25;
-  let [ref, { width }] = useMeasure();
-
-  const xTranslation = useMotionValue(0);
-
-  const [mustFinish, setMustFinish] = useState(false);
-  const [rerender, setRerender] = useState(false);
-
-  useEffect(() => {
-    let controls;
-    let finalPosition = -width / 2 - 8;
-
-    if (mustFinish) {
-      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
-        ease: "linear",
-        duration: duration * (1 - xTranslation.get() / finalPosition),
-        onComplete: () => {
-          setMustFinish(false);
-          setRerender(!rerender);
-        },
-      });
-    } else {
-      controls = animate(xTranslation, [0, finalPosition], {
-        ease: "linear",
-        duration: duration,
-        repeat: Infinity,
-        repeatType: "loop",
-        repeatDelay: 0,
-      });
-    }
-
-    return controls?.stop;
-  }, [rerender, xTranslation, duration, width]);
 
   return (
     <div className="flex min-h-screen flex-col dark:bg-neutral-900">
@@ -163,67 +127,23 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Infinite scroll section */}
-        {/* <section id="infinite-scroll" className="pt-12 pb-24 overflow-hidden">
-          <div className="container-fluid px-0">
-            <Carousel
-              className="max-w-full"
-              opts={{
-                align: "start",
-                loop: true,
-                dragFree: true,
-                containScroll: "trimSnaps",
-                slidesToScroll: 1,
-                inViewThreshold: 0.6,
-              }}
-            >
-              <CarouselContent className="-ml-2 md:-ml-4" >
-                {images.map((image, index) => (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5">
-                    <div className="relative aspect-[2/3] w-full overflow-hidden">
-                      <Image
-                        src={image}
-                        alt={image}
-                        className="object-cover rounded-lg"
-                        unoptimized
-                        fill
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-          </div>
-        </section> */}
-
         <section id="infinite-scroll" className="mt-12 mb-24">
-          <div className="relative w-screen h-[300px] overflow-hidden left-[50%] right-[50%] -mx-[50vw]">
-            <motion.div
-              className="flex gap-2 md:gap-3 h-full absolute left-0"
-              style={{ x: xTranslation }}
-              ref={ref}
-              onHoverStart={() => {
-                setMustFinish(true);
-              }}
-              onHoverEnd={() => {
-                setMustFinish(false);
-              }}
-            >
-              {[...images, ...images].map((item, idx) => (
-                <motion.div
-                  className="relative aspect-[2/3] h-full overflow-hidden"
-                  key={idx}
-                >
-                  <Image
-                    src={item}
-                    alt={item}
-                    className="object-cover rounded-2xl"
-                    unoptimized
-                    fill
-                  />
-                </motion.div>
+          <div className="relative flex overflow-x-hidden w-full">
+            <div className="flex animate-marquee">
+              {images.map((image, index) => (
+                <div key={index} className="h-[300px] md:h-[400px] lg:h-[500px] aspect-[2/3] relative mr-2 md:mr-3">
+                  <Image src={image} alt={image} className="object-cover rounded-2xl" unoptimized fill />
+                </div>
               ))}
-            </motion.div>
+            </div>
+
+            <div className="absolute top-0 flex animate-marquee2">
+              {images.map((image, index) => (
+                <div key={index} className="h-[300px] md:h-[400px] lg:h-[500px] aspect-[2/3] relative mr-2 md:mr-3">
+                  <Image src={image} alt={image} className="object-cover rounded-2xl" unoptimized fill />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
