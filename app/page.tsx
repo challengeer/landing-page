@@ -1,20 +1,17 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ChevronDownIcon, ChevronUpIcon, SunIcon as SunIconOutline } from "@heroicons/react/24/outline";
-import { SunIcon as SunIconSolid } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronUpIcon, SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import useMeasure from "react-use-measure";
 import { motion, useMotionValue, animate } from "framer-motion";
@@ -402,9 +399,9 @@ export default function Home() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               {theme === "dark" ? (
-                <SunIconSolid className="h-6 w-6" />
+                <MoonIcon className="h-6 w-6" /> // Something bugging
               ) : (
-                <SunIconOutline className="h-6 w-6" />
+                <SunIcon className="h-6 w-6" />
               )}
             </Button>
           </div>
