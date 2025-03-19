@@ -8,9 +8,9 @@ interface LangParams {
   lang: string;
 }
 
-export default function LanguagePage({ params }: { params: LangParams | Promise<LangParams> }) {
+export default function LanguagePage({ params }: { params: Promise<LangParams> }) {
   // Unwrap params using React.use()
-  const unwrappedParams = React.use(params as Promise<LangParams>);
+  const unwrappedParams = React.use(params);
   const { lang } = unwrappedParams;
   
   const { setLanguage } = useLanguage();
