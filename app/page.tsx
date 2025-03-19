@@ -171,7 +171,7 @@ export default function Home() {
               <div className="md:w-1/2 md:pr-12">
                 {/* Feature 1 */}
                 <div
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
                   id="feature-1"
                 >
                   <div className="max-w-md">
@@ -186,7 +186,7 @@ export default function Home() {
 
                 {/* Feature 2 */}
                 <div
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
                   id="feature-2"
                 >
                   <div className="max-w-md">
@@ -201,7 +201,7 @@ export default function Home() {
 
                 {/* Feature 3 */}
                 <div
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
                   id="feature-3"
                 >
                   <div className="max-w-md">
@@ -216,7 +216,7 @@ export default function Home() {
 
                 {/* Feature 4 */}
                 <div
-                  className="feature-item min-h-[90vh] flex flex-col justify-center py-16 transition-opacity"
+                  className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
                   id="feature-4"
                 >
                   <div className="max-w-md">
@@ -231,15 +231,15 @@ export default function Home() {
               </div>
 
               {/* Right column - Phone mockup */}
-              <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center">
-                <Image
-                  src="/images/mockups/phone.png"
-                  alt="Challengeer App Mockup"
-                  width={300}
-                  height={600}
-                  className="object-contain"
-                  priority
-                />
+              <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center pt-20 pb-6">
+                <div className="relative w-full h-full max-h-[600px]">
+                  <Image
+                    src="/images/mockups/phone.png"
+                    alt="Challengeer App Mockup"
+                    className="object-contain"
+                    fill
+                  />
+                </div>
               </div>
             </div>
 
