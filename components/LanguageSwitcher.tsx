@@ -1,6 +1,5 @@
 "use client";
 
-import Link from 'next/link';
 import { useLanguage, languages } from '@/contexts/LanguageContext';
 
 export default function LanguageSwitcher() {
@@ -14,7 +13,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div className="flex items-center gap-2 text-sm">
-      {Object.entries(languages).map(([code, name]) => (
+      {Object.entries(languages).map(([code]) => (
         <button
           key={code}
           onClick={() => handleLanguageChange(code)}
