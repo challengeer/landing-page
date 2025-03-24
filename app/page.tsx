@@ -14,6 +14,8 @@ import {
 import { useState } from "react";
 import { useTheme } from "next-themes";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { LanguageDropdown } from "@/components/LanguageDropdown";
+import { FooterLanguageDropdown } from "@/components/FooterLanguageDropdown";
 
 // Pexels images of people having fun
 const images = [
@@ -27,12 +29,11 @@ const images = [
 ];
 
 export default function Home() {
-  const { t, language, setLanguage } = useLanguage();
+  const { t, language } = useLanguage();
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const currentYear = new Date().getFullYear();
 
   const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
     // Update URL without full page reload
     window.history.pushState({}, '', `/${lang}`);
     // Close dropdown after selection
@@ -74,22 +75,7 @@ export default function Home() {
 
             {/* Language dropdown */}
             <div className="flex items-center gap-4 z-10">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
-                    <LanguageIcon className="h-4 w-4" />
-                    <span>{language.toUpperCase()}</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
-                    English
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
-                    Slovak
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <LanguageDropdown />
             </div>
           </div>
         </div>
@@ -296,22 +282,7 @@ export default function Home() {
         <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
           <div className="flex items-center gap-4">
             <p className="text-sm font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
-            <DropdownMenu open={footerDropdownOpen} onOpenChange={setFooterDropdownOpen}>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="flex items-center gap-2 h-8 hover:text-primary">
-                  <span className="text-sm">{language.toLowerCase()}</span>
-                  {footerDropdownOpen ? <ChevronUpIcon className="h-3 w-3" /> : <ChevronDownIcon className="h-3 w-3" />}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="center">
-                <DropdownMenuItem onClick={() => handleLanguageChange('en')} className={language === 'en' ? 'bg-muted' : ''}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => handleLanguageChange('sk')} className={language === 'sk' ? 'bg-muted' : ''}>
-                  Slovak
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>            
+            <FooterLanguageDropdown />
             <ThemeSwitcher />
           </div>
           <div className="flex gap-4">
