@@ -319,9 +319,9 @@ export default function Home() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             >
               {theme === "dark" ? (
-                <MoonIcon className="h-6 w-6" /> // Something bugging
-              ) : (
                 <SunIcon className="h-6 w-6" />
+              ) : (
+                <MoonIcon className="h-6 w-6" />
               )}
             </Button>
           </div>
