@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 // Pexels images of people having fun
@@ -30,6 +30,13 @@ export default function Home() {
   const { theme, setTheme } = useTheme();
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const currentYear = new Date().getFullYear();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
@@ -38,6 +45,8 @@ export default function Home() {
     // Close dropdown after selection
     setFooterDropdownOpen(false);
   };
+
+
 
   return (
     <div className="flex min-h-screen flex-col dark:bg-neutral-900">
