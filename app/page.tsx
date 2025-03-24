@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { InfiniteScroll } from "@/components/InfiniteScroll";
 import { GradientSection } from "@/components/GradientSection";
 import { Features } from "@/components/Features";
+import { Download } from "@/components/Download";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <InfiniteScroll />
         <GradientSection />
         <Features />
+        <Download />
       </main>
       <Footer />
     </div>
