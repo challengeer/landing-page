@@ -16,6 +16,19 @@ export function Features() {
               className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
               id="feature-1"
             >
+              {/* Mobile mockup */}
+              <div className="md:hidden w-full mb-8">
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/mockups/phone.png"
+                    alt="Challengeer App Mockup"
+                    width={280}
+                    height={560}
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+              </div>
               <div className="max-w-md">
                 <h3 className="text-2xl md:text-5xl font-bold mb-6">
                   {t('Features.feature1.title') || "Create Challenges"}
@@ -31,6 +44,18 @@ export function Features() {
               className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
               id="feature-2"
             >
+              {/* Mobile mockup */}
+              <div className="md:hidden w-full mb-8">
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/mockups/phone.png"
+                    alt="Challengeer App Mockup"
+                    width={280}
+                    height={560}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
               <div className="max-w-md">
                 <h3 className="text-2xl md:text-5xl font-bold mb-6">
                   {t('Features.feature2.title') || "Track Progress"}
@@ -46,6 +71,18 @@ export function Features() {
               className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
               id="feature-3"
             >
+              {/* Mobile mockup */}
+              <div className="md:hidden w-full mb-8">
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/mockups/phone.png"
+                    alt="Challengeer App Mockup"
+                    width={280}
+                    height={560}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
               <div className="max-w-md">
                 <h3 className="text-2xl md:text-5xl font-bold mb-6">
                   {t('Features.feature3.title') || "Compete with Friends"}
@@ -61,6 +98,18 @@ export function Features() {
               className="feature-item min-h-screen flex flex-col justify-center py-16 transition-opacity"
               id="feature-4"
             >
+              {/* Mobile mockup */}
+              <div className="md:hidden w-full mb-8">
+                <div className="flex justify-center">
+                  <Image
+                    src="/images/mockups/phone.png"
+                    alt="Challengeer App Mockup"
+                    width={280}
+                    height={560}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
               <div className="max-w-md">
                 <h3 className="text-2xl md:text-5xl font-bold mb-6">
                   {t('Features.feature4.title') || "Earn Rewards"}
@@ -72,7 +121,7 @@ export function Features() {
             </div>
           </div>
 
-          {/* Right column - Phone mockup */}
+          {/* Right column - Phone mockup (desktop only) */}
           <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center pt-20 pb-6">
             <div className="relative w-full h-full max-h-[600px]">
               <Image
@@ -82,20 +131,6 @@ export function Features() {
                 fill
               />
             </div>
-          </div>
-        </div>
-
-        {/* Mobile mockup (only visible on mobile) */}
-        <div className="md:hidden w-full mb-16">
-          <div className="flex justify-center">
-            <Image
-              src="/images/mockups/phone.png"
-              alt="Challengeer App Mockup"
-              width={280}
-              height={560}
-              className="object-contain"
-              priority
-            />
           </div>
         </div>
       </div>
