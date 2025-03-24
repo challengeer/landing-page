@@ -11,8 +11,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTheme } from "next-themes";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 // Pexels images of people having fun
 const images = [
@@ -27,16 +28,8 @@ const images = [
 
 export default function Home() {
   const { t, language, setLanguage } = useLanguage();
-  const { theme, setTheme } = useTheme();
   const [footerDropdownOpen, setFooterDropdownOpen] = useState(false);
   const currentYear = new Date().getFullYear();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
@@ -45,8 +38,6 @@ export default function Home() {
     // Close dropdown after selection
     setFooterDropdownOpen(false);
   };
-
-
 
   return (
     <div className="flex min-h-screen flex-col dark:bg-neutral-900">
@@ -320,19 +311,8 @@ export default function Home() {
                   Slovak
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
-            <Button
-              variant="ghost"
-              size="default"
-              className="flex items-center gap-2 h-8 hover:text-primary"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            >
-              {theme === "dark" ? (
-                <SunIcon className="h-6 w-6" />
-              ) : (
-                <MoonIcon className="h-6 w-6" />
-              )}
-            </Button>
+            </DropdownMenu>            
+            <ThemeSwitcher />
           </div>
           <div className="flex gap-4">
             <Link href="#" className="text-sm font-medium hover:text-primary">
