@@ -37,6 +37,7 @@ export function EmailSubscribe() {
         setError("Something went wrong. Please try again.");
       }
     } catch (error) {
+      console.error(error);
       setError("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
