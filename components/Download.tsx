@@ -9,7 +9,7 @@ export function Download() {
   return (
     <section className="py-12 md:py-24 overflow-hidden">
       <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-        <div className="text-center bg-muted dark:bg-neutral-800 rounded-2xl py-12 px-4">
+        <div className="text-center bg-neutral-100 dark:bg-neutral-800 rounded-2xl py-12 px-4">
           <h2 className="text-3xl sm:text-4xl font-bold leading-tight">{t('Download.title')}</h2>
           <div className="flex flex-row items-center justify-center gap-4 mt-8">
             <Link href="#">

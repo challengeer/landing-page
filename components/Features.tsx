@@ -42,7 +42,7 @@ export function Features() {
       <div className="max-w-screen-xl mx-auto px-6 md:px-10">
         <div className="md:flex">
           {/* Left column - Features content */}
-          <div className="md:w-1/2 md:pr-12">
+          <div className="md:w-1/2 md:pr-12 relative">
             {/* Features Container */}
             <div className="relative">
               {/* Feature 1 */}
@@ -68,7 +68,7 @@ export function Features() {
                   <h3 className="text-2xl md:text-5xl font-bold mb-6">
                     {t('Features.feature1.title') || "Create Challenges"}
                   </h3>
-                  <p className="text-base md:text-xl text-muted-foreground">
+                  <p className="text-base md:text-xl text-neutral-500 dark:text-neutral-400">
                     {t('Features.feature1.description') || "Create custom challenges for yourself or invite friends to join. Set goals, timeframes, and rewards to stay motivated."}
                   </p>
                 </div>
@@ -96,7 +96,7 @@ export function Features() {
                   <h3 className="text-2xl md:text-5xl font-bold mb-6">
                     {t('Features.feature2.title') || "Track Progress"}
                   </h3>
-                  <p className="text-base md:text-xl text-muted-foreground">
+                  <p className="text-base md:text-xl text-neutral-500 dark:text-neutral-400">
                     {t('Features.feature2.description') || "Monitor your achievements with detailed statistics and visualizations. See your improvement over time and stay motivated."}
                   </p>
                 </div>
@@ -124,7 +124,7 @@ export function Features() {
                   <h3 className="text-2xl md:text-5xl font-bold mb-6">
                     {t('Features.feature3.title') || "Compete with Friends"}
                   </h3>
-                  <p className="text-base md:text-xl text-muted-foreground">
+                  <p className="text-base md:text-xl text-neutral-500 dark:text-neutral-400">
                     {t('Features.feature3.description') || "Join leaderboards and friendly competitions. Share achievements and celebrate successes together."}
                   </p>
                 </div>
@@ -152,7 +152,7 @@ export function Features() {
                   <h3 className="text-2xl md:text-5xl font-bold mb-6">
                     {t('Features.feature4.title') || "Earn Rewards"}
                   </h3>
-                  <p className="text-base md:text-xl text-muted-foreground">
+                  <p className="text-base md:text-xl text-neutral-500 dark:text-neutral-400">
                     {t('Features.feature4.description') || "Unlock achievements and earn rewards as you complete challenges. Redeem points for exclusive content and benefits."}
                   </p>
                 </div>
@@ -160,20 +160,20 @@ export function Features() {
             </div>
 
             {/* Step Indicator */}
-            <div className="hidden md:flex justify-center sticky bottom-8 z-50">
-              <div className="flex gap-4 md:gap-6">
+            {/* <div className="hidden md:flex sticky left-0 bottom-[20vh] z-50">
+              <div className="flex gap-4">
                 {[1, 2, 3, 4].map((step) => (
                   <div
                     key={step}
-                    className={`h-0.5 md:h-1 w-12 md:w-16 transition-all duration-300 ${
+                    className={`h-0.5 md:h-1.5 w-12 md:w-20 rounded-full transition-all duration-300 ${
                       currentFeature === step
-                        ? "bg-primary scale-125"
-                        : "bg-muted-foreground/30"
+                        ? "bg-purple-500"
+                        : "bg-neutral-500/30 dark:bg-neutral-400/30"
                     }`}
                   />
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right column - Phone mockup (desktop only) */}

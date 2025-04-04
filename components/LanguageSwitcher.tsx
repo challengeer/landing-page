@@ -18,7 +18,7 @@ export default function LanguageSwitcher() {
           key={code}
           onClick={() => handleLanguageChange(code)}
           className={`px-2 py-1 rounded-md ${
-            language === code ? 'bg-primary text-primary-foreground' : 'hover:bg-muted'
+            language === code ? 'bg-primary text-primary-foreground' : 'hover:bg-neutral-200 dark:hover:bg-neutral-700'
           }`}
         >
           {code.toUpperCase()}
