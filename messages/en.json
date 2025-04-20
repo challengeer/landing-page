@@ -52,14 +52,14 @@
     "googlePlay": "Google Play"
   },
   "Download": {
-    "title": "Download for IOS/Android",
-    "description": "Be the first to know when we launch new features and updates.",
-    "emailPlaceholder": "Enter your email",
-    "subscribe": "Subscribe",
-    "privacyText": "We'll keep you updated on our launch and new features.",
-    "termsLink": "Terms & Conditions",
-    "downloadAppStore": "Download on App Store",
-    "downloadGooglePlay": "Get it on Google Play"
+    "title": "Launching soon"
+  },
+  "EmailSubscribe": {
+    "placeholder": "Enter your email",
+    "button": "Get Notified",
+    "text": "Join our waitlist to be notified when we launch. No spam, ever.",
+    "error": "Something went wrong. Please try again.",
+    "success": "Thank you for subscribing!"
   },
   "Footer": {
     "rights": "© {year} Challengeer",

@@ -52,14 +52,14 @@
     "googlePlay": "Google Play"
   },
   "Download": {
-    "title": "Stiahnite si Challengeer pre IOS/Android",
-    "description": "Buďte prví, kto sa dozvie o nových funkciách a aktualizáciách.",
-    "emailPlaceholder": "Zadajte svoj email",
-    "subscribe": "Prihlásiť sa",
-    "privacyText": "Budeme vás informovať o spustení a nových funkciách.",
-    "termsLink": "Podmienky používania",
-    "downloadAppStore": "Stiahnuť z App Store",
-    "downloadGooglePlay": "Získať na Google Play"
+    "title": "Už čoskoro spúšťame"
+  },
+  "EmailSubscribe": {
+    "placeholder": "Zadaj svoj email",
+    "button": "Dostať Upozornenie",
+    "text": "Buď prvý, kto sa dozvie o spustení aplikácie.",
+    "error": "Niečo sa pokazilo. Skúste to znova.",
+    "success": "Ďakujeme za odoslanie."
   },
   "Footer": {
     "rights": "© {year} Challengeer",
