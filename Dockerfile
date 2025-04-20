@@ -1,36 +1,52 @@
-# Step 1: Use the official Node.js image
-FROM node:18 AS builder
-
-# Step 2: Set the working directory in the container
+# Stage 1: Dependencies
+FROM node:20-alpine AS deps
 WORKDIR /app
 
-# Step 3: Copy package.json and package-lock.json (or yarn.lock) for npm or yarn
+# Copy package files
 COPY package.json package-lock.json ./
 
-# Step 4: Install dependencies
-RUN npm install
+# Install dependencies
+RUN npm ci
 
-# Step 5: Copy the rest of the Next.js app code into the container
-COPY . .
-
-# Step 6: Build the Next.js app
-RUN npm run build
-
-# Step 7: Create the production image from the build
-FROM node:18 AS runner
-
+# Stage 2: Builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Step 8: Install only production dependencies
-COPY --from=builder /app/package.json /app/package-lock.json ./
-RUN npm install --production
+# Copy dependencies from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
-# Step 9: Copy the build output from the builder stage
-COPY --from=builder /app/.next /app/.next
-COPY --from=builder /app/public /app/public
+# Set environment variables
+ENV NEXT_TELEMETRY_DISABLED 1
 
-# Step 10: Expose the port Next.js will run on
+# Build the application
+RUN npm run build
+
+# Stage 3: Runner
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+# Set environment variables
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
+
+# Create a non-root user
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copy necessary files from builder
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+
+# Set correct permissions
+RUN chown -R nextjs:nodejs /app
+
+# Switch to non-root user
+USER nextjs
+
+# Expose the port the app runs on
 EXPOSE 3000
 
-# Step 11: Start the Next.js app in production mode
-CMD ["npm", "start"]
+# Set the command to run the app
+CMD ["node", "server.js"] 
