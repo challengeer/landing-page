@@ -55,7 +55,7 @@ export function Features() {
                 <div className="md:hidden w-full mb-8">
                   <div className="flex justify-center">
                     <Image
-                      src="/images/mockups/phone.png"
+                      src="/images/mockups/challenge.png"
                       alt="Challengeer App Mockup"
                       width={280}
                       height={560}
@@ -84,7 +84,7 @@ export function Features() {
                 <div className="md:hidden w-full mb-8">
                   <div className="flex justify-center">
                     <Image
-                      src="/images/mockups/phone.png"
+                      src="/images/mockups/challenge.png"
                       alt="Challengeer App Mockup"
                       width={280}
                       height={560}
@@ -112,7 +112,7 @@ export function Features() {
                 <div className="md:hidden w-full mb-8">
                   <div className="flex justify-center">
                     <Image
-                      src="/images/mockups/phone.png"
+                      src="/images/mockups/submission.png"
                       alt="Challengeer App Mockup"
                       width={280}
                       height={560}
@@ -180,7 +180,15 @@ export function Features() {
           <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center pt-20 pb-6">
             <div className="relative w-full h-full max-h-[600px]">
               <Image
-                src="/images/mockups/phone.png"
+                src={
+                  currentFeature === 1
+                    ? "/images/mockups/challenge.png"
+                    : currentFeature === 2
+                    ? "/images/mockups/challenge.png"
+                    : currentFeature === 3
+                    ? "/images/mockups/submission.png"
+                    : "/images/mockups/phone.png"
+                }
                 alt="Challengeer App Mockup"
                 className="object-contain"
                 fill
