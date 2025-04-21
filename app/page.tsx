@@ -5,6 +5,7 @@ import { InfiniteScroll } from "@/components/InfiniteScroll";
 import { GradientSection } from "@/components/GradientSection";
 import { Features } from "@/components/Features";
 import { Download } from "@/components/Download";
+import { EmailSubscribe } from "@/components/EmailSubscribe";
 
 export default function Home() {
   return (
@@ -15,7 +16,7 @@ export default function Home() {
         <InfiniteScroll />
         <GradientSection />
         <Features />
-        <Download />
+        <EmailSubscribe />
       </main>
       <Footer />
     </div>

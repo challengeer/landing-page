@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @layer utilities {
@@ -26,6 +27,10 @@
   100% {
     transform: translateX(0%);
   }
+}
+
+.font-noto-serif {
+  font-family: 'Noto Serif', serif;
 }
 
 @custom-variant dark (&:is(.dark *));

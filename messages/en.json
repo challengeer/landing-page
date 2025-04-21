@@ -6,19 +6,33 @@
     "getStarted": "Get Started"
   },
   "Hero": {
-    "title": "Helping people achieve their goals"
+    "pill": "🚀 Launching soon for Android & iOS",
+    "title1": "Helping people",
+    "title2": {
+      "prefix": "achieve",
+      "highlight": "their goals"
+    },
+    "cta": "Join our waitlist"
+  },
+  "Message": {
+    "line1": "Turn goals",
+    "line2": {
+      "prefix": "into",
+      "highlight": "adventures"
+    },
+    "line3": "with friends"
   },
   "Features": {
     "feature1": {
-      "title": "Connect with people people you know",
-      "description": "Find and connect with your friends and family on Challengeer"
+      "title": "Challenge your friends",
+      "description": "Create challenges and compete with your friends"
     },
     "feature2": {
-      "title": "Create fun challenges",
-      "description": "This motivates you to push even further"
+      "title": "Push your limits",
+      "description": "Set goals and achieve them"
     },
     "feature3": {
-      "title": "Post your result",
+      "title": "Share your victories",
       "description": "Take photo to show others that you completed your challenge"
     },
     "feature4": {
@@ -57,7 +71,7 @@
   "EmailSubscribe": {
     "placeholder": "Enter your email",
     "button": "Get Notified",
-    "text": "Join our waitlist to be notified when we launch. No spam, ever.",
+    "text": "Join our waitlist to be notified when we launch.",
     "error": "Something went wrong. Please try again.",
     "success": "Thank you for subscribing!"
   },

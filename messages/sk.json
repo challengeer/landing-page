@@ -6,23 +6,37 @@
     "getStarted": "Začať"
   },
   "Hero": {
-    "title": "Pomáhame ľuďom dosiahnuť svoje ciele"
+    "pill": "🚀 Už čoskoro spúšťame pre Android & iOS",
+    "title1": "Pomáhame ľuďom",
+    "title2": {
+      "prefix": "dosiahnuť",
+      "highlight": "svoje ciele"
+    },
+    "cta": "Pridať sa na čakáreň"
+  },
+  "Message": {
+    "line1": "Premeň ciele",
+    "line2": {
+      "prefix": "na",
+      "highlight": "dobrodružstvá"
+    },
+    "line3": "s priateľmi"
   },
   "Features": {
     "feature1": {
-      "title": "Spojte sa s ľuďmi, ktorých poznáte",
+      "title": "Spoj sa s ľuďmi, ktorých poznáš",
       "description": "Nájdite a spojte sa s priateľmi a rodinou na Challengeer"
     },
     "feature2": {
-      "title": "Vytvárajte výzvy",
+      "title": "Vytváraj výzvy",
       "description": "Toto vás motivuje, aby ste sa do toho vložili ešte viac"
     },
     "feature3": {
-      "title": "Zdieľajte svoje výsledky",
+      "title": "Zdieľaj svoje výsledky",
       "description": "Urob fotku a zdieľaj ju s ostatnými, aby ste ukázali, že ste splnili výzvu"
     },
     "feature4": {
-      "title": "Nevzdávajte sa",
+      "title": "Nevzdávaj sa",
       "description": "Toto vás motivuje, aby ste sa do toho vložili ešte viac"
     }
 
