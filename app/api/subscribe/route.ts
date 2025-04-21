@@ -3,7 +3,7 @@ import mysql from 'mysql2/promise';
 
 export async function POST(request: Request) {
   try {
-    const { email } = await request.json();
+    const { email, language } = await request.json();
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,10 +22,29 @@ export async function POST(request: Request) {
       database: process.env.MYSQL_DATABASE,
     });
 
+    // Check if email already exists
+    const [existingEmails] = await connection.execute(
+      'SELECT email FROM subscribers WHERE email = ?',
+      [email]
+    );
+
+    if (Array.isArray(existingEmails) && existingEmails.length > 0) {
+      // Update language for existing subscriber
+      await connection.execute(
+        'UPDATE subscribers SET language = ? WHERE email = ?',
+        [language, email]
+      );
+      await connection.end();
+      return NextResponse.json(
+        { message: 'Language preference updated' },
+        { status: 200 }
+      );
+    }
+
     // Insert email into database
     await connection.execute(
-      'INSERT INTO subscribers (email, created_at) VALUES (?, NOW())',
-      [email]
+      'INSERT INTO subscribers (email, language, created_at) VALUES (?, ?, NOW())',
+      [email, language]
     );
 
     await connection.end();

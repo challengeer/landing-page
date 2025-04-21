@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 export function EmailSubscribe() {
   const { t } = useLanguage();
+  const { language } = useLanguage();
   const [email, setEmail] = useState("");
   const [validEmail, setValidEmail] = useState(false);
   const [error, setError] = useState("");
@@ -35,7 +36,7 @@ export function EmailSubscribe() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, language }),
       });
 
       if (response.ok) {
