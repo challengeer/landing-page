@@ -40,7 +40,7 @@ export function Features() {
 
   return (
     <section id="features" className="py-24 md:py-32 relative">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10">
+      <div className="max-w-screen-lg mx-auto px-6 md:px-10">
         <div className="md:flex">
           {/* Left column - Features content */}
           <div className="md:w-1/2 md:pr-12 relative">
@@ -56,7 +56,7 @@ export function Features() {
                 <div className="md:hidden w-full mb-8">
                   <div className="flex justify-center">
                     <Image
-                      src="/images/mockups/challenge.png"
+                      src="/images/mockups/friends.png"
                       alt="Challengeer App Mockup"
                       width={280}
                       height={560}
@@ -141,7 +141,7 @@ export function Features() {
                 <div className="md:hidden w-full mb-8">
                   <div className="flex justify-center">
                     <Image
-                      src="/images/mockups/phone.png"
+                      src="/images/mockups/streak.png"
                       alt="Challengeer App Mockup"
                       width={280}
                       height={560}
@@ -183,12 +183,12 @@ export function Features() {
               <Image
                 src={
                   currentFeature === 1
-                    ? "/images/mockups/challenge.png"
+                    ? "/images/mockups/friends.png"
                     : currentFeature === 2
                     ? "/images/mockups/challenge.png"
                     : currentFeature === 3
                     ? "/images/mockups/submission.png"
-                    : "/images/mockups/phone.png"
+                    : "/images/mockups/streak.png"
                 }
                 alt="Challengeer App Mockup"
                 className="object-contain"

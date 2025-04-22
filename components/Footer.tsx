@@ -10,8 +10,8 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-neutral-200 dark:border-neutral-700 py-6 md:py-0 text-muted-foreground">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
+    <footer className="border-t border-neutral-200 dark:border-neutral-700 py-6 md:py-0">
+      <div className="max-w-screen-xl mx-auto flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row px-6 md:px-10">
         <div className="flex items-center gap-4">
           <p className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">{t('Footer.rights').replace('{year}', currentYear.toString())}</p>
           <FooterLanguageDropdown />
