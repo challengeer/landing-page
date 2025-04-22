@@ -8,7 +8,7 @@ export function Header() {
   const { t } = useLanguage();
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 dark:bg-neutral-800/95 dark:supports-[backdrop-filter]:bg-neutral-800/60">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-neutral-800/95 dark:supports-[backdrop-filter]:bg-neutral-800/60">
       <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-4">
         <div className="flex items-center justify-between relative">
           {/* Logo */}
