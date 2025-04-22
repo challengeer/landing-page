@@ -1,7 +1,9 @@
 'use client';
+
 import { useState } from 'react';
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import Button from '@/components/ui/button';
 
 export function EmailSubscribe() {
   const { t } = useLanguage();
@@ -13,7 +15,7 @@ export function EmailSubscribe() {
   const [isLoading, setIsLoading] = useState(false);
 
   const verifyEmail = async (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     setValidEmail(emailRegex.test(email));
   }
 
@@ -56,7 +58,7 @@ export function EmailSubscribe() {
     <section id="subscribe-section" className="max-w-screen-lg mx-auto py-12 px-4">
       <div className="bg-neutral-100 dark:bg-neutral-800 rounded-2xl py-12 px-6">
         <p className="text-center text-2xl lg:text-3xl font-bold mb-6">{t('EmailSubscribe.text')}</p>
-        
+
         {success ? (
           <p className="text-center text-sm">{t('EmailSubscribe.success')}</p>
         ) : (
@@ -73,19 +75,15 @@ export function EmailSubscribe() {
                 />
                 {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
-              <button
+              
+              <Button
                 type="submit"
-                disabled={!validEmail || isLoading}
-                className={`flex items-center justify-center gap-2 bg-purple-500 text-white h-12 px-4 rounded-lg cursor-pointer relative ${!validEmail || isLoading ? 'opacity-50' : 'hover:opacity-80'}`}
+                disabled={!validEmail}
+                loading={isLoading}
               >
-                {isLoading && (
-                  <Loader2 className="w-6 h-6 animate-spin absolute" />
-                )}
-                <div className={`flex items-center gap-2 ${isLoading ? 'opacity-0' : ''}`}>
-                  <span>{t('EmailSubscribe.button')}</span>
-                  <ArrowRight className="w-4 h-4" />
-                </div>
-              </button>
+                <span>{t('EmailSubscribe.button')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
           </form>
         )}

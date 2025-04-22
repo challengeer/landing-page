@@ -1,4 +1,5 @@
 'use client';
+
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";

@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const { email, language } = await request.json();
 
     // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
     if (!email || !emailRegex.test(email)) {
       return NextResponse.json(
         { error: 'Invalid email address' },

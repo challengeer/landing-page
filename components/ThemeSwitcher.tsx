@@ -1,5 +1,6 @@
 'use client';
-import { Button } from "@/components/ui/button";
+
+import Button from "@/components/ui/button";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
 import { useMounted } from "@/hooks/useMounted";

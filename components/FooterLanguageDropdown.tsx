@@ -1,5 +1,6 @@
 'use client';
-import { Button } from "@/components/ui/button";
+
+import Button from "@/components/ui/button";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
