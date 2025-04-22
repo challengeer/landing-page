@@ -1,6 +1,5 @@
 'use client';
 
-import Button from "@/components/ui/button";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/outline";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
@@ -29,10 +28,10 @@ export function FooterLanguageDropdown() {
   return (
     <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="flex items-center gap-2 h-8 hover:text-primary">
-          <span className="text-sm">{language.toLowerCase()}</span>
-          {dropdownOpen ? <ChevronUpIcon className="h-3 w-3" /> : <ChevronDownIcon className="h-3 w-3" />}
-        </Button>
+        <div className="flex items-center gap-1 cursor-pointer">
+          <span className="text-sm text-neutral-500 dark:text-neutral-400">{language.toLowerCase()}</span>
+          {dropdownOpen ? <ChevronUpIcon className="h-3 w-3 text-neutral-500 dark:text-neutral-400" /> : <ChevronDownIcon className="h-3 w-3 text-neutral-500 dark:text-neutral-400" />}
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center">
         <DropdownMenuItem onClick={() => onLanguageSelect('en')} className={language === 'en' ? 'bg-muted' : ''}>

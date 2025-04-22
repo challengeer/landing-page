@@ -1,6 +1,5 @@
 'use client';
 
-import Button from "@/components/ui/button";
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
 import { useMounted } from "@/hooks/useMounted";
@@ -12,17 +11,15 @@ export function ThemeSwitcher() {
   if (!mounted) return null;
 
   return (
-    <Button
-      variant="ghost"
-      size="default"
-      className="flex items-center gap-2 h-8 hover:text-primary"
+    <button
+      className="cursor-pointer"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <SunIcon className="h-6 w-6" />
+        <SunIcon className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
       ) : (
-        <MoonIcon className="h-6 w-6" />
+        <MoonIcon className="h-4 w-4 text-neutral-500 dark:text-neutral-400" />
       )}
-    </Button>
+    </button>
   );
 } 

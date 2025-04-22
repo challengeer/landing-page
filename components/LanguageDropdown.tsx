@@ -1,6 +1,5 @@
 'use client';
 
-import Button from "@/components/ui/button";
 import { LanguageIcon } from "@heroicons/react/24/solid";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
@@ -29,10 +28,10 @@ export function LanguageDropdown() {
   return (
     <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="flex items-center gap-2">
+        <div className="flex items-center gap-1 cursor-pointer">
           <LanguageIcon className="h-4 w-4" />
           <span>{language.toUpperCase()}</span>
-        </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => onLanguageSelect('en')} className={language === 'en' ? 'bg-muted' : ''}>
