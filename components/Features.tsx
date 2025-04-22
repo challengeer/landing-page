@@ -1,4 +1,5 @@
 'use client';
+
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useEffect, useState, useRef } from "react";
@@ -177,8 +178,8 @@ export function Features() {
           </div>
 
           {/* Right column - Phone mockup (desktop only) */}
-          <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center pt-20 pb-6">
-            <div className="relative w-full h-full max-h-[600px]">
+          <div className="hidden md:flex w-1/2 sticky top-0 h-screen justify-center items-center pt-16">
+            <div className="relative w-full h-full max-h-[800px]">
               <Image
                 src={
                   currentFeature === 1
