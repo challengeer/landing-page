@@ -25,7 +25,7 @@ export function Header() {
           </div>
 
           {/* Navigation - now centered */}
-          <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8">
+          {/* <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8">
             <Link href="#features" className="text-sm font-medium transition-colors hover:text-primary">
               {t('Navigation.features')}
             </Link>
@@ -35,7 +35,7 @@ export function Header() {
             <Link href="#download" className="text-sm font-medium transition-colors hover:text-primary">
               {t('Navigation.download')}
             </Link>
-          </nav>
+          </nav> */}
 
           {/* Language dropdown */}
           <div className="flex items-center gap-4 z-10">
