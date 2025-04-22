@@ -24,12 +24,12 @@
   },
   "Features": {
     "feature1": {
-      "title": "Challenge your friends",
-      "description": "Create challenges and compete with your friends"
+      "title": "Connect with people you know",
+      "description": "Find and connect with your friends and family on Challengeer"
     },
     "feature2": {
-      "title": "Push your limits",
-      "description": "Set goals and achieve them"
+      "title": "Create custom challenges",
+      "description": "Select from different categories and set date of completion"
     },
     "feature3": {
       "title": "Share your victories",
@@ -37,7 +37,7 @@
     },
     "feature4": {
       "title": "Keep working",
-      "description": "This motivates you to push even further"
+      "description": "Completing challenges increases your streak and keeps you motivated"
     }
 
   },
