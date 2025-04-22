@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { EmailSubscribe } from "@/components/EmailSubscribe";
 
 export function Download() {
   const { t } = useLanguage();
@@ -13,7 +12,7 @@ export function Download() {
         <div className="text-center bg-neutral-100 dark:bg-neutral-800 rounded-2xl py-12 px-4">
           <h2 className="text-3xl sm:text-4xl font-bold leading-tight">{t('Download.title')}</h2>
           <div className="flex flex-row items-center justify-center gap-4 mt-8">
-            {/* <Link href="#"> */}
+            <Link href="#">
               <Image
                 src="/images/store-badges/app-store.svg"
                 alt="App Store Download"
@@ -22,8 +21,8 @@ export function Download() {
                 className="object-contain"
                 priority
               />
-            {/* </Link> */}
-            {/* <Link href="#"> */}
+            </Link>
+            <Link href="#">
               <Image
                 src="/images/store-badges/google-play.svg"
                 alt="Google Play Download"
@@ -32,10 +31,7 @@ export function Download() {
                 className="object-contain"
                 priority
               />
-            {/* </Link> */}
-          </div>
-          <div className="mt-12">
-            <EmailSubscribe />
+            </Link>
           </div>
         </div>
       </div>
