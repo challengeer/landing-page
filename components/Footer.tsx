@@ -18,13 +18,13 @@ export function Footer() {
           <ThemeSwitcher />
         </div>
         <div className="flex gap-4">
-          <Link href="#" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
+          <Link href="/privacy-policy" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
             {t('Footer.privacy')}
           </Link>
-          <Link href="#" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
+          <Link href="/terms-of-service" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
             {t('Footer.terms')}
           </Link>
-          <Link href="#" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
+          <Link href="/contact" className="text-sm text-neutral-500 dark:text-neutral-400 font-medium hover:underline">
             {t('Footer.contact')}
           </Link>
         </div>

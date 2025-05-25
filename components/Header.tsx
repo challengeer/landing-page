@@ -1,4 +1,5 @@
 'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -12,7 +13,7 @@ export function Header() {
       <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-4">
         <div className="flex items-center justify-between relative">
           {/* Logo */}
-          <div className="flex items-center gap-2 z-10">
+          <Link href="/" className="flex items-center gap-2 z-10">
             <Image
               src="/images/logo.png"
               alt="Challengeer Logo"
@@ -22,7 +23,7 @@ export function Header() {
               priority
             />
             <span className="text-xl font-bold">Challengeer</span>
-          </div>
+          </Link>
 
           {/* Navigation - now centered */}
           {/* <nav className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 gap-8">

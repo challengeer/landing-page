@@ -1,6 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { Providers } from "@/app/providers";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const inter = Inter({
@@ -29,9 +31,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <GoogleAnalytics ga_id="G-CKCC2SMFLS" />
       </head>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-white dark:bg-neutral-900`} suppressHydrationWarning>
         <Providers>
+          <Header />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>
