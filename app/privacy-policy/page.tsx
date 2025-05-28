@@ -9,7 +9,7 @@ const date = new Date("2025-05-25").toLocaleDateString();
 
 export default function PrivacyPolicy() {
   return (
-    <main className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+    <div className="max-w-screen-lg mx-auto px-6 md:px-10 py-8 md:py-16 w-full items-center justify-center">
       <h1 className="text-4xl font-bold mb-8">
         Privacy Policy
       </h1>
@@ -171,6 +171,6 @@ export default function PrivacyPolicy() {
           </p>
         </section>
       </div>
-    </main>
+    </div>
   );
 } 

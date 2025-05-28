@@ -31,10 +31,12 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
         <GoogleAnalytics ga_id="G-CKCC2SMFLS" />
       </head>
-      <body className={`${inter.className} min-h-screen bg-white dark:bg-neutral-900`} suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-white dark:bg-neutral-900 flex flex-col`} suppressHydrationWarning>
         <Providers>
           <Header />
-          {children}
+          <main className="flex-1">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

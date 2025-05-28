@@ -12,14 +12,12 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col dark:bg-neutral-900">
-      <main className="flex-1">
-        <Hero />
-        <InfiniteScroll />
-        <GradientSection />
-        <Features />
-        <EmailSubscribe />
-      </main>
-    </div>
+    <>
+      <Hero />
+      <InfiniteScroll />
+      <GradientSection />
+      <Features />
+      <EmailSubscribe />
+    </>
   );
 } 
